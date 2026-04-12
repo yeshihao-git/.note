@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "工作/plan.md",
+                "file": "工具/cmake.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "plan"
+              "title": "cmake"
             }
           }
         ]
@@ -41,13 +41,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "工作/plan.md",
+                "file": "工具/cmake.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "plan 的大纲"
+              "title": "cmake 的大纲"
             }
           },
           {
@@ -194,12 +194,25 @@
   },
   "active": "fa10bb1e911fad38",
   "lastOpenFiles": [
-    "工作/公司信息.md",
-    "工作/plan.md",
-    "vscode/vscode 连接 wsl2 进行远程开发调试.md",
+    "编程工具/cmake.md",
     "工具/cmake.md",
-    "工具/powershell.md",
+    "编程工具/visual studio.md",
     "工具/vscode终端无法识别命令行工具.md",
+    "工具/powershell.md",
+    "工作/plan.md",
+    "工作/公司信息.md",
+    "工作/环境部署及编译.md",
+    "前端/vtk.js.md",
+    "前端/vue.js.md",
+    "前端/jsx和tsx之间的区别.md",
+    "前端/javascript.md",
+    "软件/vim指南.md",
+    "软件/obsidian指南.md",
+    "未分类/行终止符.md",
+    "未分类/序列化.md",
+    "C++/类对象内存模型.md",
+    "opengl/opengl.md",
+    "vscode/vscode 连接 wsl2 进行远程开发调试.md",
     "vscode/assets/Pasted image 20260410155840.png",
     "环境/assets/Pasted image 20260410155708.png",
     "vscode/assets/Pasted image 20260410143543.png",
@@ -210,11 +223,6 @@
     "环境/assets/Pasted image 20260410143053.png",
     "vscode/assets/Pasted image 20260410142427.png",
     "vscode/assets/Pasted image 20260410142041.png",
-    "前端/jsx和tsx之间的区别.md",
-    "前端/javascript.md",
-    "工作/环境部署及编译.md",
-    "前端/vue.js.md",
-    "前端/vtk.js.md",
     "前端/双击 index.html 打开vue 项目（Webpack 版）.md",
     "暂存.md",
     "vscode/assets",
