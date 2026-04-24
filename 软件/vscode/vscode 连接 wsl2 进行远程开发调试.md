@@ -250,17 +250,41 @@ q
 
 5. 下方为终端输出，用于查看：日志信息
 
-> launch.json：调试任务文件，`vscode` 调试代码用 配置文件
+> **launch.json**：调试任务文件，`vscode` 调试代码用 配置文件
+
+---
+
+**参考**：[vscode官方文档](https://code.visualstudio.com/docs/cpp/launch-json-reference)
 
 # 3. 编译调试 Java 代码
 ## 3.1 使用 vscode 编译调试
 1. `vscode` 中安装 `Java` 相关插件  
 ![[Pasted image 20260413111521.png]]  
 
-2. 在右上角选择 `Run Java` 进行编译，选择 `Debug Java` 进行 `debug`  
+2. 编写 `launch.json`
+```js
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "调试后端(Java Jar)", // 配置名称
+            "type": "java",              // 配置类型 
+            "request": "launch",         // 请求配置类型（launch启动或attach附加进程）
+            "jarPath": "${workspaceFolder}/target/inteCAEServer-1.0.0.jar", // 要运行的 jar 包
+            "vmArgs": "-Djava.library.path=/mnt/c/Users/HP/code/test/IntevueServer/build/bin" // JVM 参数
+        }
+    ]
+}
+```
+
+3. 在右上角选择 `Run Java` 进行编译，选择 `Debug Java` 进行 `debug`  
 ![[Pasted image 20260413112108.png]]  
 
-# 4. Java 调用 C++ 代码
+---
+
+**参考**：[vscode官方文档](https://code.visualstudio.com/docs/java/java-debugging)
+
+# 4. Java 调用 C++ 动态库
 ## 4.1 方法1：通过 JNI 调用 C++ 代码
 1. 创建带有 `native` 方法的 `Java` 类
 ```java
@@ -495,3 +519,91 @@ cmake --build build
 #### 方法2：cmake
 基于 [[#4.2.1 环境配置和示例代码]] 中的 `CMakeLists.txt`，在 `vscode` 中点击左侧 `CMake` 后，选择 生成 即可  
 ![[Pasted image 20260414115351.png]]
+
+# 5. 调试 C++ 动态库（一个综合联调示例）
+本节介绍的项目流程为：用户上传 `.fem` 模型文件到 `Vue` 前端 ，`Vue` 前端传给 `Java` 后端，`Java` 后端调用 `C++` 数据处理模块生成 `.vtp` 文件返回给 `Java` 后端，`Java` 后端返回给 `Vue` 前端并显示。项目结构如下：
+```bash
+.
+├── IntevueServer
+│   └── IntevueCAE
+│       ├── build
+│       ├── backend          # Java 后端
+│       ├── foundation       # C++ 数据处理模块（生成动态库后被 Java 调用）
+│       └── vtk-install
+└── fronted                  # Vue 前端
+    └── src
+        ├── Elements
+        ├── InterFace
+        ├── Operate
+        ├── Reader
+        ├── appcore
+        └── assets
+```
+
+1. 在根目录编写 `launch.json`（**注意**：规范用法是在前后端分别写 `launch.json` 进行配置）
+```js
+{
+    "version": "0.2.0",
+    "configurations": [
+        // 调试 Vue
+        {
+            "name": "调试Vue前端",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/src/*"
+            }
+        },
+
+        // 调试 Java (wsl)
+        {
+            "name": "调试Java后端",
+            "type": "java",
+            "request": "launch",  
+            "jarPath": "${workspaceFolder}/target/inteCAEServer-1.0.0.jar",
+            "vmArgs": "-Djava.library.path=/mnt/c/Users/HP/code/test/IntevueServer/build/bin"
+        },
+        
+        // 调试 C++ (wsl)
+        {
+            "name": "Attach to Java Process",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "/usr/bin/java",
+            "processId": "${command:pickProcess}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "additionalSOLibSearchPath": "${workspaceFolder}/IntevueServer/build/bin",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "sourceFileMap": {
+                "/build/": "${workspaceFolder}/IntevueServer/build"
+            }
+        }
+    ]
+}
+```
+
+2. `CMakeLists.txt` 文件中加入调试信息
+```cmake
+set(CMAKE_BUILD_TYPE Debug)
+```
+
+3. 在 `Java` 和 `C++` 相关位置打断点，先启动 `Vue` 前端
+   再启动 `Java` 调试器
+   ![[Pasted image 20260424103648.png|144]]
+   最后启动 `C++` 调试器 附加到 `Java` 进程
+   ![[Pasted image 20260424103849.png|143]]
+   ![[Pasted image 20260424103933.png|454]]
+
+4. 最终效果：实现一个 vscode 窗口同时调试 Java、C++ 代码
+   ![[Pasted image 20260424104217.png|329]] 
+
+

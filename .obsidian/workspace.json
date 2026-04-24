@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "831f708ed1774114",
+            "id": "05af7aac0dbac56d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,21 +22,34 @@
             }
           },
           {
-            "id": "669ab29fa3c6b4f5",
+            "id": "831f708ed1774114",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "计算机知识/计算机图形学.md",
+                "file": "计算机知识/设计模式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "计算机图形学"
+              "title": "设计模式"
+            }
+          },
+          {
+            "id": "1a29d063c91f9301",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软件/vscode/vscode 连接 wsl2 进行远程开发调试.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "vscode 连接 wsl2 进行远程开发调试"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -48,21 +61,18 @@
       {
         "id": "7269ce300dd1804d",
         "type": "tabs",
-        "dimension": 60.9271523178808,
         "children": [
           {
-            "id": "c848367fa0f344ca",
+            "id": "7d6d85c53de4bcf0",
             "type": "leaf",
             "state": {
-              "type": "outline",
+              "type": "file-explorer",
               "state": {
-                "file": "计算机知识/计算机图形学.md",
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
-              "icon": "lucide-list",
-              "title": "计算机图形学 的大纲"
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
             }
           },
           {
@@ -71,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "section:(SWIG)",
+                "query": "maven",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,30 +103,10 @@
             }
           }
         ]
-      },
-      {
-        "id": "7a660fd62407edb0",
-        "type": "tabs",
-        "dimension": 39.0728476821192,
-        "children": [
-          {
-            "id": "7d6d85c53de4bcf0",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
-              },
-              "icon": "lucide-folder-closed",
-              "title": "文件列表"
-            }
-          }
-        ]
       }
     ],
     "direction": "horizontal",
-    "width": 332.51103591918945
+    "width": 292.51103591918945
   },
   "right": {
     "id": "1c208daae7e02438",
@@ -126,6 +116,21 @@
         "id": "ce7e3adbdd29ddf1",
         "type": "tabs",
         "children": [
+          {
+            "id": "c848367fa0f344ca",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "工作/plan.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "plan 的大纲"
+            }
+          },
           {
             "id": "e2f848cda7da8ff9",
             "type": "leaf",
@@ -188,13 +193,11 @@
               "title": "添加笔记属性"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 351.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -207,53 +210,53 @@
       "bases:新建数据库": false
     }
   },
-  "active": "669ab29fa3c6b4f5",
+  "active": "05af7aac0dbac56d",
   "lastOpenFiles": [
-    "工作/plan.md",
-    "计算机知识/计算机图形学.md",
-    "计算机知识/跨域问题.md",
-    "前端/vtk.js.md",
-    "后端/VTK（C++）.md",
-    "工具/vscode/vscode 连接 wsl2 进行远程开发调试.md",
     "后端/Java/SpringBoot.md",
-    "计算机知识/数据传输方式.md",
-    "工业软件知识/CAE.md",
-    "后端/SWIG.md",
-    "后端/Java",
-    "工具/vscode/vscode.md",
-    "工业软件知识/工业软件知识.md",
-    "计算机知识/行终止符.md",
+    "计算机知识/设计模式.md",
+    "软件/vscode/vscode 连接 wsl2 进行远程开发调试.md",
+    "前端/前端 debug.md",
+    "工作/plan.md",
     "工作/环境部署及编译.md",
-    "工作/公司信息.md",
+    "工作/公司.md",
+    "前端/vue.js.md",
+    "前端/vtk.js.md",
+    "计算机知识/跨域问题.md",
+    "计算机知识/计算机图形学.md",
+    "软件/vscode/vscode.md",
+    "软件/vscode/assets/Pasted image 20260424104217.png",
+    "软件/vscode/assets/Pasted image 20260424103933.png",
+    "软件/vscode/assets/Pasted image 20260424103849.png",
+    "软件/vscode/assets/Pasted image 20260424103648.png",
+    "软件/CMake.md",
+    "前端/assets/Pasted image 20260423134301.png",
+    "软件/vim.md",
+    "工业软件知识/CAE.md",
+    "工业软件知识/实现.md",
+    "后端/VTK（C++）.md",
+    "计算机知识/LocalTime、UTC、OffsetFromUTC、TimeZone 概念详解.md",
+    "计算机知识/数据传输方式.md",
+    "前端/前后端 RESTful 接口 与 JSON 字段设计规范.md",
+    "后端/SWIG.md",
+    "计算机知识/assets/Pasted image 20260422114852.png",
+    "计算机知识/assets/Pasted image 20260422114839.png",
+    "计算机知识/assets/Pasted image 20260422103251.png",
+    "计算机知识/assets",
+    "工业软件知识/工业软件知识.md",
+    "后端/Java",
+    "计算机知识/行终止符.md",
     "计算机知识/序列化.md",
     "计算机知识/MIME类型.md",
-    "计算机知识/LocalTime、UTC、OffsetFromUTC、TimeZone.md",
-    "工具/obsidian.md",
-    "工具/assets/Pasted image 20260416105633.png",
-    "工具/assets",
+    "软件/obsidian.md",
+    "软件/assets/Pasted image 20260416105633.png",
+    "软件/assets",
     "未命名 1.base",
     "未命名.base",
     "工业软件知识",
     "后端/assets/Pasted image 20260415162645.png",
-    "后端/assets/Pasted image 20260415154713.png",
-    "后端/assets/Pasted image 20260415154705.png",
-    "后端/assets/Pasted image 20260415154649.png",
-    "后端/assets/Pasted image 20260415154632.png",
-    "后端/assets/Pasted image 20260415154608.png",
     "后端/assets",
-    "前端/vue.js.md",
-    "工具/CMake.md",
-    "工具/powershell.md",
-    "工具/vim.md",
     "计算机知识",
-    "暂存.md",
     "后端",
-    "前端/JavaScript.md",
-    "工具/visual studio.md",
-    "工具/vscode/assets/Pasted image 20260414115351.png",
-    "工具/vscode/assets/Pasted image 20260413112108.png",
-    "工具/vscode/assets/Pasted image 20260413111521.png",
-    "工具/vscode/assets",
-    "工具/vscode"
+    "软件/vscode/assets"
   ]
 }
