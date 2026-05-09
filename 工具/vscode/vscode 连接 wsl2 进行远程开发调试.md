@@ -615,3 +615,55 @@ sudo sysctl -w kernel.yama.ptrace_scope=0
    ![[Pasted image 20260424104217.png|329]] 
 
 
+# 6. 番外篇：使用 Trae 调试 C++
+1. 命令行中安装 lldb
+```bash
+sudo apt update 
+sudo apt install lldb
+```
+
+2. Trae 中安装插件
+![[Pasted image 20260506172653.png|345]]
+
+3. 编写 `launch.json`（注意删除 gdb 相关的配置）
+```js
+{
+    "version": "0.2.0",
+    "configurations": [
+        // 调试 Vue
+        {
+            "name": "调试Vue前端",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/src/*"
+            }
+        },
+
+        // 调试 Java (wsl)
+        {
+            "name": "调试Java后端",
+            "type": "java",
+            "request": "launch",  
+            "jarPath": "${workspaceFolder}/target/inteCAEServer-1.0.0.jar",
+            "vmArgs": "-Djava.library.path=/mnt/c/Users/HP/code/test/IntevueServer/build/bin"
+        },
+        
+        // 调试 C++ (wsl)
+        {
+            "name": "Attach to Java Process",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "/usr/bin/java",
+            "processId": "${command:pickProcess}",
+            "additionalSOLibSearchPath": "${workspaceFolder}/IntevueServer/build/bin",
+            "sourceFileMap": {
+                "/build/": "${workspaceFolder}/IntevueServer/build"
+            }
+        }
+    ]
+}
+```

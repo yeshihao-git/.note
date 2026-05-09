@@ -52,9 +52,10 @@
 5. 在命令面板使用
 
 ## 3.3 给表格加上横向滑动条
-设置 - 外观 - CSS代码片段
+1. 设置 - 外观 - CSS代码片段
 ![[Pasted image 20260416105633.png]]
-选择文件夹，新建 css 文件，写入以下内容
+
+2. 选择文件夹，新建 css 文件，写入以下内容
 ```css
 .markdown-source-view div.cm-embed-block.cm-table-widget {
     overflow-x: auto;
@@ -67,5 +68,10 @@
 }
 ```
 
-开启 table-scroll 后刷新
+3. 开启 table-scroll 后刷新
 
+## 3.4 标题自动编号
+1. 下载插件 `Number Headings`
+   
+2. 设置如下
+![[Pasted image 20260509114350.png|575]]
