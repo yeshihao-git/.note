@@ -58,23 +58,6 @@
             }
           },
           {
-            "id": "a7c0779dfb3dad5e",
-            "type": "leaf",
-            "state": {
-              "type": "search",
-              "state": {
-                "query": "tag:#工业软件",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": true,
-                "extraContext": false,
-                "sortOrder": "alphabetical"
-              },
-              "icon": "lucide-search",
-              "title": "搜索"
-            }
-          },
-          {
             "id": "2af6b1ff6c26a2ed",
             "type": "leaf",
             "state": {
@@ -108,7 +91,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -121,6 +104,7 @@
       {
         "id": "978ac7ce60c10571",
         "type": "tabs",
+        "dimension": 99.99999999999999,
         "children": [
           {
             "id": "7b4bfcc39966c1d6",
@@ -135,6 +119,23 @@
               },
               "icon": "lucide-tags",
               "title": "标签"
+            }
+          },
+          {
+            "id": "a7c0779dfb3dad5e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#操作系统",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
             }
           },
           {
@@ -196,18 +197,21 @@
       "graph:查看关系图谱": false,
       "command-palette:打开命令面板": true,
       "workspaces:管理工作区布局": false,
+      "obsidian-statusbar-pomo:Start pomodoro": false,
       "canvas:新建白板": true,
       "bases:新建数据库": true,
       "obsidian-excalidraw-plugin:新建绘图文件": true,
       "obsidian-kanban:Create new board": true,
-      "obsidian-statusbar-pomo:Start pomodoro": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": true,
+      "omnisearch:Omnisearch": true
     }
   },
-  "active": "7b4bfcc39966c1d6",
+  "active": "a80cd892efffb712",
   "lastOpenFiles": [
+    "roam/值分类.md",
     "plan.md",
-    "plan.md",
+    "roam/工厂模式.md",
+    "roam/IO 模型.md",
     "roam/test.md",
     "roam/单例模式.md",
     "roam/工作相关信息.md",
@@ -222,14 +226,12 @@
     "roam/空间数据结构.md",
     "roam/分层渲染.md",
     "roam/组合模式.md",
-    "roam/工厂模式.md",
     "roam/数据传输方式.md",
     "roam/MIME类型.md",
     "roam/LocalTime、UTC、OffsetFromUTC、TimeZone 概念详解.md",
     "roam/行终止符.md",
     "roam/负载均衡算法.md",
     "roam/socket编程.md",
-    "roam/IO 模型.md",
     "roam/虚拟内存.md",
     "roam/文件系统.md",
     "roam/文件传输.md",
