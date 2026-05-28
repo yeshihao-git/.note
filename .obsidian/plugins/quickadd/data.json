@@ -46,25 +46,6 @@
       "templater": {
         "afterCapture": "none"
       }
-    },
-    {
-      "id": "6ae70240-6cd0-4ddd-abf1-67118e67103a",
-      "name": "标签macro",
-      "type": "Macro",
-      "command": true,
-      "runOnStartup": false,
-      "macro": {
-        "name": "标签macro",
-        "id": "cd4665bb-17af-43a3-879e-7c6022ccddab",
-        "commands": [
-          {
-            "name": "模板: 插入模板",
-            "type": "Obsidian",
-            "id": "aad7c068-57a6-41cb-8d9a-6eb3565f1993",
-            "commandId": "insert-template"
-          }
-        ]
-      }
     }
   ],
   "inputPrompt": "single-line",

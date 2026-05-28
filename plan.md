@@ -23,7 +23,6 @@ kanban-plugin: board
 
 - [ ] obsidian：[QuickAdd笔记编写](https://www.bilibili.com/video/BV1cH4y1Q7ou?vd_source=4441bc96046659b39d059d583f36ff52&spm_id_from=333.788.videopod.sections)
 - [ ] obsidian配置
-	- [ ] spacekeys
 - [ ] obsidian样式设置
 - [ ] 毕业相关材料编写
 	- [x] 答辩记录与学位授予决议

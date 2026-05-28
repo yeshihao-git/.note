@@ -46,18 +46,35 @@
             "dimension": 67.22689075630252,
             "children": [
               {
-                "id": "31c39bda1397796c",
+                "id": "7b4bfcc39966c1d6",
                 "type": "leaf",
                 "state": {
-                  "type": "outline",
+                  "type": "tag",
                   "state": {
-                    "file": "plan.md",
-                    "followCursor": true,
+                    "sortOrder": "alphabetical",
+                    "useHierarchy": false,
                     "showSearch": false,
                     "searchQuery": ""
                   },
-                  "icon": "lucide-list",
-                  "title": "plan 的大纲"
+                  "icon": "lucide-tags",
+                  "title": "标签"
+                }
+              },
+              {
+                "id": "a7c0779dfb3dad5e",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "tag:#计算机网络",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": true,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  },
+                  "icon": "lucide-search",
+                  "title": "搜索"
                 }
               },
               {
@@ -114,7 +131,7 @@
           }
         ],
         "direction": "horizontal",
-        "width": 278.50152587890625
+        "width": 290.50152587890625
       },
       "right": {
         "id": "2276a7c1e28a10c3",
@@ -125,35 +142,18 @@
             "type": "tabs",
             "children": [
               {
-                "id": "7b4bfcc39966c1d6",
+                "id": "31c39bda1397796c",
                 "type": "leaf",
                 "state": {
-                  "type": "tag",
+                  "type": "outline",
                   "state": {
-                    "sortOrder": "alphabetical",
-                    "useHierarchy": false,
+                    "file": "plan.md",
+                    "followCursor": true,
                     "showSearch": false,
                     "searchQuery": ""
                   },
-                  "icon": "lucide-tags",
-                  "title": "标签"
-                }
-              },
-              {
-                "id": "a7c0779dfb3dad5e",
-                "type": "leaf",
-                "state": {
-                  "type": "search",
-                  "state": {
-                    "query": "",
-                    "matchingCase": false,
-                    "explainSearch": false,
-                    "collapseAll": true,
-                    "extraContext": false,
-                    "sortOrder": "alphabetical"
-                  },
-                  "icon": "lucide-search",
-                  "title": "搜索"
+                  "icon": "lucide-list",
+                  "title": "plan 的大纲"
                 }
               },
               {
@@ -207,7 +207,7 @@
           }
         ],
         "direction": "horizontal",
-        "width": 371.5
+        "width": 355.5
       },
       "left-ribbon": {
         "hiddenItems": {
@@ -217,11 +217,12 @@
           "bases:新建数据库": true,
           "obsidian-excalidraw-plugin:新建绘图文件": true,
           "obsidian-kanban:Create new board": true,
-          "obsidian-git:Open Git source control": true
+          "obsidian-git:Open Git source control": true,
+          "templates:插入模板": false
         }
       },
       "active": "74e60c0c006b0e60",
-      "mtime": "2026-05-27T15:49:01+08:00"
+      "mtime": "2026-05-28T14:26:29+08:00"
     }
   },
   "active": "默认"
