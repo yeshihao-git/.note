@@ -10,5 +10,6 @@
   "trashOption": "local",
   "newFileLocation": "folder",
   "newFileFolderPath": "roam",
-  "vimMode": false
+  "vimMode": false,
+  "showInlineTitle": true
 }

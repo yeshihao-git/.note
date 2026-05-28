@@ -66,7 +66,7 @@
                 "state": {
                   "type": "search",
                   "state": {
-                    "query": "tag:#计算机网络",
+                    "query": "tag:#未分类",
                     "matchingCase": false,
                     "explainSearch": false,
                     "collapseAll": true,
@@ -218,11 +218,11 @@
           "obsidian-excalidraw-plugin:新建绘图文件": true,
           "obsidian-kanban:Create new board": true,
           "obsidian-git:Open Git source control": true,
-          "templates:插入模板": false
+          "templates:插入模板": true
         }
       },
-      "active": "74e60c0c006b0e60",
-      "mtime": "2026-05-28T14:26:29+08:00"
+      "active": "7b4bfcc39966c1d6",
+      "mtime": "2026-05-28T21:41:35+08:00"
     }
   },
   "active": "默认"
