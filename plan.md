@@ -7,7 +7,6 @@ kanban-plugin: board
 ## 待办
 
 - [ ] 找人帮领毕业证
-- [ ] 电动车牌上交签字 @{2026-06-15}
 - [ ] docs：[[CSS]]笔记
 - [ ] 迁移 emacs 笔记到 obsidian
 	- [ ] grpc
@@ -22,7 +21,6 @@ kanban-plugin: board
 
 ## 今日进行中
 
-- [ ] obsidian样式设置
 - [ ] 搬、邮寄、卖东西
 - [ ] 毕业相关材料编写
 	- [x] 答辩记录与学位授予决议
@@ -31,11 +29,14 @@ kanban-plugin: board
 	- [x] 论文查重查ai查格式，提交
 	- [x] 打印两份 原创性声明
 	- [ ] 论文打印胶装
+- [ ] 电瓶车换电池
+- [ ] 电动车牌上交签字 @{2026-06-15}
 
 
 ## 完成
 
 **Complete**
+- [x] obsidian样式设置
 - [x] 收拾东西
 - [x] obsidian配置
 

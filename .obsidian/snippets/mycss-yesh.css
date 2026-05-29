@@ -24,8 +24,17 @@ body>div.app-container>div.horizontal-main-container>div>div.workspace-ribbon.si
     background-color: #FC8DC21A;
 }
 
+.workspace-split {
+    background-color: transparent;
+}
+
 .workspace-split.mod-horizontal.mod-sidedock.mod-left-split>div.workspace-sidedock-vault-profile {
     background-color: #FC8DC21A;
+}
+
+/* 右上角 最小化、窗口化、关闭 背景色 */
+.workspace-tab-header-container::after {
+    background-color: #ffffff;
 }
 
 /* ===============================表格=============================== */
