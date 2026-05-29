@@ -1,4 +1,4 @@
-/* ===============================当前工作区的面板内容区样式=============================== */
+/* ===============================工作区=============================== */
 
 /* 设置面板背景为白色 */
 .workspace-leaf-content {
@@ -9,6 +9,24 @@
 └── workspace-leaf（一个面板/标签页）
     └── workspace-leaf-content（这个面板的内容区）
         └── view-content（具体视图：编辑器、大纲、文件树……） */
+
+/* 工作区 上栏颜色 */
+.workspace-tab-header-container {
+    background-color: #FC8DC21A;
+}
+
+body>div.titlebar>div>div.titlebar-button-container.mod-right {
+    background-color: #FC8DC21A !important;
+}
+
+/* 工作区 左侧栏颜色 */
+body>div.app-container>div.horizontal-main-container>div>div.workspace-ribbon.side-dock-ribbon.mod-left {
+    background-color: #FC8DC21A;
+}
+
+.workspace-split.mod-horizontal.mod-sidedock.mod-left-split>div.workspace-sidedock-vault-profile {
+    background-color: #FC8DC21A;
+}
 
 /* ===============================表格=============================== */
 
@@ -23,6 +41,11 @@
 
 .markdown-reading-view .markdown-preview-view.markdown-rendered table {
     width: max-content !important;
+}
+
+/* 表格 上色 */
+.cm-table-widget.markdown-rendered>div>table>thead {
+    background-color: #FC8DC21A;
 }
 
 /* ===============================列表=============================== */
@@ -125,4 +148,8 @@ input[type="checkbox"] {
 
 .tree-item>.tree-item-children>.tree-item>.tree-item-children>.tree-item>.tree-item-children>.tree-item>.tree-item-children>.tree-item>.tree-item-children>.tree-item>.tree-item-self>.tree-item-inner {
     color: #8938EF !important;
+}
+
+body>div.app-container>div.horizontal-main-container>div>div.workspace-ribbon.side-dock-ribbon.mod-left::before {
+    background-color: #FC8DC21A;
 }
