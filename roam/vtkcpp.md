@@ -2,7 +2,7 @@
 tags:
   - cpp
 ---
-# 1 VTK 渲染管线 流程
+# VTK 渲染管线 流程
 
 本节介绍 VTK 中最核心的渲染管线流程：从数据处理到可视化的完整流程及各个环节涉及的组件。
 ![[Pasted image 20260409182138.png]]
@@ -17,15 +17,15 @@ tags:
 | `RenderWindow`（渲染窗口） | 连接浏览器`DOM`的容器，如`Canvas`（持有多个`Renderer`） |
 | `Interactor` (交互器)   | 监听鼠标、键盘事件，更新相机位置或物体状态                   |
 
-# 2 VTK 重要概念
-## 2.1 VTK 内部索引
+# VTK 重要概念
+## VTK 内部索引
 
-# 3 了解 VTK 支持的文件格式以及对应 Reader
+# 了解 VTK 支持的文件格式以及对应 Reader
 
 本节介绍 VTK 中常用的格式，包括：VTK 原生格式、部分外部数据格式；
 其次介绍对应的 Reader，在 VTK（C++）中 Reader 类的命名通常遵循 `vtk[格式名]Reader`。
 
-## 3.1 VTK 原生格式
+## VTK 原生格式
 
 VTK 原生格式是 VTK 自有的专用格式，性能和功能最佳。可以分为：
 1. Legacy：老牌，不支持并行IO，对大规模数据集的加载速度较慢
@@ -57,7 +57,7 @@ VTK XML 文件可从两个维度划分：
 | PStructuredGrid              | .pvts | 并行、结构化  | `vtkXMLPStructuredGridReader`   |
 | PUnstructuredGrid            | .pvtu | 并行、非结构化 | `vtkXMLPUnstructuredGridReader` |
 
-### 3.1.1 VTK 原生格式可视化示例
+### VTK 原生格式可视化示例
 #### ImageData
 
 点的排列是 X/Y/Z 轴等间距排列（2D时，X/Y 轴等间距排列）的矩阵栅格；
@@ -92,7 +92,7 @@ VTK XML 文件可从两个维度划分：
 
 **参考**：[VTK XML file formats](https://docs.vtk.org/en/latest/vtk_file_formats/vtkxml_file_format.html#)
 
-## 3.2 外部数据格式
+## 外部数据格式
 
 外部数据格式是外部软件生成的通用或专用的数据格式，用于数据交换。
 
@@ -102,11 +102,11 @@ VTK XML 文件可从两个维度划分：
 | PLY（多边形文件格式）   | `.ply` | `vtkPLYReader` |
 | OBJ（Wavefront） | `.obj` | `vtkOBJReader` |
 
-# 4 快速开始
+# 快速开始
 
 本节通过一个剖切代码示例，来介绍 VTK 渲染管线流程、reader、剖切、切面等内容。
 
-## 4.1 3.1项目结构
+## 3.1项目结构
 
 ```
 .
@@ -114,7 +114,7 @@ VTK XML 文件可从两个维度划分：
 └── CapClip.cxx
 ```
 
-## 4.2 编写 CMakeLists.txt 
+## 编写 CMakeLists.txt 
 
 ```cmake
 # 1. 指定CMake最低版本要求
@@ -166,7 +166,7 @@ vtk_module_autoinit(
 )
 ```
 
-## 4.3 编写代码
+## 编写代码
 
 ```C++
 // CapClip.cxx 文件
@@ -367,7 +367,7 @@ vtkSmartPointer<vtkPolyData> ReadPolyData(std::string const& fileName)
 } // namespace
 ```
 
-## 4.4 编译运行
+## 编译运行
 
 ```bash
 cmake -B build -G Ninja
@@ -382,7 +382,7 @@ cmake --build build
 
 **参考**：[vtk-examples CapClip](https://examples.vtk.org/site/Cxx/Meshes/CapClip/#download-and-build-capclip)
 
-# 5 常用 API 接口说明
+# 常用 API 接口说明
 
 本节只介绍 VTK 中最核心的 API（其余根据需求查找 [vtk-examples](https://examples.vtk.org/site/Cxx/) 和 [vtk reference](https://vtk.org/doc/nightly/html/classes.html)）
 

@@ -2,18 +2,18 @@
 tags:
   - 操作系统
 ---
-# 1 socket
+# socket
 
 **what：**
 套接字，通过系统调用 socket() 创建并返回 用于网络通信的文件描述符[^1]即 fd，后续网络通信的操作都是基于此 fd
 
-## 1.1 socket 编程的基本流程 
+## socket 编程的基本流程 
 
 - **服务端**： socket ：创建并返回用于网络通信的 fd -> bind ：绑定 socket 到本地IP端口 -> listen ：监听 -> accept ：接受连接，返回新的socket的文件描述符 -> recv/send ：收发数据
 - **客户端**： socket -> connect -> send/recv
 
-## 1.2 socket 相关的数据结构
-### 1.2.1 addrinfo 结构体
+## socket 相关的数据结构
+### addrinfo 结构体
 
 **what：**
 配置信息去查询内容，返回的实际内容在 sockaddr（调用 getaddrinfo() 填充该结构体，并以链表形式返回）
@@ -31,7 +31,7 @@ struct addrinfo {
 };
 ```
 
-### 1.2.2 sockaddr 结构体
+### sockaddr 结构体
 
 **what：**
 通用地址结构体；保存套接字地址信息，但是 sa_data 是 `char[14]` 不够直观，因此使用 sockaddr_in、sockaddr_in6 替代。可以和 struct sockaddr_in* 互转
@@ -42,7 +42,7 @@ struct sockaddr {
 };
 ```
 
-### 1.2.3 sockaddr_in 结构体
+### sockaddr_in 结构体
 
 **what：**
 IPv4 专用地址结构体，比 sockaddr 更直观
@@ -60,7 +60,7 @@ struct in_addr {
 };
 ```
 
-### 1.2.4 sockaddr_in6 结构体
+### sockaddr_in6 结构体
 
 **what：**
 IPv6 专用地址结构体，比 sockaddr 更直观
@@ -78,8 +78,8 @@ struct in6_addr {
 };
 ```
 
-## 1.3 epoll 相关的数据结构
-### 1.3.1 epoll_event
+## epoll 相关的数据结构
+### epoll_event
 
 epoll事件的数据结构
 ```c
@@ -108,7 +108,7 @@ struct epoll_event
 - **EPOLLET**：边缘触发模式（默认是水平触发）
 - **EPOLLONESHOT**：单次触发后禁用监控
 
-## 1.4 字节序转换
+## 字节序转换
 
 ```c
 htons()  // 主机到网络short格式

@@ -6,11 +6,11 @@ kanban-plugin: board
 
 ## 待办
 
+- [ ] 笔记本电脑添加硅脂
+- [ ] obsidian：手机同步笔记
 - [ ] tools：代码片段管理器
-- [ ] 迁移 emacs 笔记到 obsidian
-	- [ ] grpc
-	- [ ] asio
-- [ ] obsidian导出没有空行问题
+- [ ] obsidian：导出没有空行问题
+- [ ] obsidian：更好用的链接插件（快速链接到标题）
 - [ ] docs：CAE node elements...
 - [ ] docs：颜色空间（RGB、HSV、HSL）、HSV转RGB
 - [ ] docs：线性插值
@@ -22,6 +22,16 @@ kanban-plugin: board
 
 ## 今日进行中
 
+- [ ] 迁移 emacs 笔记到 obsidian
+	- [x] grpc
+	- [x] asio
+	- [x] git
+	- [x] cpp
+	- [ ] emacs
+	- [ ] org-mode
+	- [ ] elisp
+	- [ ] cmake
+- [ ] 将未分类的笔记分类
 
 
 ## 完成

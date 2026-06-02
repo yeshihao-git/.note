@@ -2,7 +2,7 @@
 tags:
   - 工具
 ---
-# 1 设置emacs键位
+# 设置emacs键位
 
 1. `PSReadLine`： https://github.com/PowerShell/PSReadLine ，查看`Installation and Upgrading`部分
 2. 永久设置：
@@ -11,13 +11,13 @@ notepad $PROFILE
 Set-PSReadLineOption -EditMode Emacs
 ```
 
-# 2 打开资源管理器
+# 打开资源管理器
 
 ```powershell
 ii .
 ```
 
-# 3 使用 vim
+# 使用 vim
 
 ```powershell
 winget install vim.vim

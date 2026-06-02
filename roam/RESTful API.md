@@ -2,7 +2,7 @@
 tags:
   - 计算机网络
 ---
-# 1 REST 思想
+# REST 思想
 
 1. URI 表示 **资源**
 ```
@@ -14,7 +14,7 @@ tags:
 3. HTTP状态码 表示 **操作结果**
 4. **无状态**（服务端不保存客户端信息）
 
-## 1.1 URI
+## URI
 
 **what：**
  统一资源标识符，用于 标识资源 ；所有的 URL 都是 URI，反之不成立
@@ -25,7 +25,7 @@ urn:isbn:0451450523                # 这是一个URN，也是URI
 https://www.example.com/index.html # 这是一个URL，同时也是URI
 ```
 
-## 1.2 URL
+## URL
 
 **what：**
 统一资源定位符，用于 定位、访问资源
@@ -35,12 +35,12 @@ https://www.example.com/index.html # 协议 + 域名 + 路径
 ftp://example.com/files/file.zip   # 协议 + 地址 + 路径
 ```
 
-# 2 RESTful API
+# RESTful API
 
 **what：**
 REST 是思想，RESTful 是符合这个思想的接口；具体来说使用 [[HTTP]] 协议 管理资源
 
-## 2.1 URL 设计规范
+## URL 设计规范
 
 1. URL 只放**名词**（资源），且用**复数**
 2. **小写 + 横短线分隔**（驼峰式不推荐）
@@ -49,7 +49,7 @@ REST 是思想，RESTful 是符合这个思想的接口；具体来说使用 [[H
 /vtp-models
 ```
 
-## 2.2 HTTP 请求方法规范
+## HTTP 请求方法规范
 
 用请求方式区分操作：
 - `GET`：**查询**资源
@@ -64,23 +64,23 @@ GET    /vtpModels/{id}  # 查询单个模型详情
 DELETE /vtpModels/{id}  # 删除模型
 ```
 
-## 2.3 HTTP 状态码规范
+## HTTP 状态码规范
 
 使用原生状态码标识请求结果：
 - `2xx`：成功
 - `4xx`：客户端错误
 - `5xx`：服务器错误
 
-## 2.4 无状态
+## 无状态
 
 服务器**不保存客户端状态**，身份信息（Token）放在请求头传输，不依赖会话
 
-# 3 JSON 设计
-## 3.1 请求 JSON
+# JSON 设计
+## 请求 JSON
 
 无统一标准
 
-## 3.2 响应 JSON
+## 响应 JSON
 
 统一设计
 ```json

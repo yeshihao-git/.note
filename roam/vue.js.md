@@ -3,14 +3,14 @@ tags:
   - js
   - 前端
 ---
-# 1 特性
-## 1.1 单文件组件（SFC）
+# 特性
+## 单文件组件（SFC）
 
 - `<template>`：编写 HTML 结构
 - `<script>`：编写 [[javascript]] 逻辑
 - `<style>`：编写 CSS 样式
 
-### 1.1.1 区别：`<script>` 和 `<script setup>` 
+### 区别：`<script>` 和 `<script setup>` 
 
 - `<script>`：原生 选项式/组合式 API 写法，支持 vue2/3，写法繁琐
 - `<script setup>`：vue3 组合式 API 语法糖，支持 vue3，写法简单
@@ -80,23 +80,23 @@ const handleClick = () => emit('ok')
 </script>
 ```
 
-### 1.1.2 区别：`<style>` 和 `<style scoped>
+### 区别：`<style>` 和 `<style scoped>
 `
 - `<style>`：**全局样式**，作用于整个项目所有组件
 - `<style scoped>`：**局部样式**，**只作用于当前组件**，不会污染其他组件
 
-## 1.2 响应式
+## 响应式
 
 **what**：
 监听数据变化，视图自动更新。定义方式：
 - `ref`：适用于**基本类型**
 - `reactive`：适用于**引用类型**（对象、数组、函数 等）
 
-## 1.3 组件通信（props、emit）
+## 组件通信（props、emit）
 
 - `props`：父 → 子
 - `emit`：子 → 父
 `props` 和 `emit` 都是在**子组件**里声明、定义的，父组件只是 “传值 / 监听”
 
-## 1.4 生命周期
+## 生命周期
 
