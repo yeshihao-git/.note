@@ -70,3 +70,4 @@ add_custom_command(TARGET MathMaster POST_BUILD
     $<TARGET_FILE_DIR:MathMaster>
 )
 ```
+
