@@ -4,5 +4,6 @@
     "mycss-yesh"
   ],
   "accentColor": "#fc8dc2",
-  "theme": "moonstone"
+  "theme": "moonstone",
+  "showRibbon": true
 }

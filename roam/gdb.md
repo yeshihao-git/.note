@@ -1,7 +1,7 @@
 ---
 tags:
   - cpp
-  - tools
+  - 工具
 ---
 # gdb
 

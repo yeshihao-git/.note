@@ -22,21 +22,28 @@ kanban-plugin: board
 
 ## 今日进行中
 
-- [ ] 迁移 emacs 笔记到 obsidian
-	- [x] grpc
-	- [x] asio
-	- [x] git
-	- [x] cpp
-	- [ ] emacs
-	- [ ] org-mode
-	- [ ] elisp
-	- [ ] cmake
-- [ ] 将未分类的笔记分类
 
 
 ## 完成
 
 **Complete**
+- [x] 将未分类的笔记分类
+- [x] 迁移 emacs 笔记到 obsidian
+	- [x] grpc
+	- [x] asio
+	- [x] git
+	- [x] cpp
+	- [x] emacs
+	- [x] org-mode
+	- [x] elisp
+	- [x] cmake
+	- [x] tools
+	- [x] interview
+	- [x] python
+	- [x] pytorch
+	- [x] pip
+	- [x] life
+	- [x] linux
 
 
 
