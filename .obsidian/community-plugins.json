@@ -9,5 +9,7 @@
   "default-template",
   "codeblock-customizer",
   "easylink",
-  "better-export-pdf"
+  "better-export-pdf",
+  "obsidian-git",
+  "obsidian-excalidraw-plugin"
 ]
