@@ -10,5 +10,6 @@
   "quickadd",
   "default-template",
   "codeblock-customizer",
-  "easylink"
+  "easylink",
+  "better-export-pdf"
 ]

@@ -817,7 +817,7 @@
       "enableActiveLineHighlight": true,
       "codeBlockBorderStylingPosition": "disable",
       "showIndentationLines": false,
-      "enableLinks": true,
+      "enableLinks": false,
       "enableLinkUpdate": false,
       "enableBracketHighlight": true,
       "highlightNonMatchingBrackets": true,
@@ -838,10 +838,10 @@
       },
       "folding": {
         "inverseFold": true,
-        "rememberFoldState": true,
+        "rememberFoldState": false,
         "scope": "nofoldspecified",
         "persistence": "session",
-        "ignoreShortBlocksOnInverseFold": false
+        "ignoreShortBlocksOnInverseFold": true
       }
     },
     "textHighlight": {
@@ -850,10 +850,10 @@
     },
     "semiFold": {
       "enableSemiFold": true,
-      "visibleLines": 1,
+      "visibleLines": 3,
       "showAdditionalUncollapseButon": true,
-      "autoFoldLongCodeblocks": false,
-      "longCodeBlockLines": 30,
+      "autoFoldLongCodeblocks": true,
+      "longCodeBlockLines": 20,
       "semifoldEffect": "opacity"
     },
     "header": {
@@ -882,7 +882,7 @@
       "copyModifierKey": "ctrl"
     },
     "printing": {
-      "enablePrintToPDFStyling": true,
+      "enablePrintToPDFStyling": false,
       "forceCurrentColorUse": false,
       "uncollapseDuringPrint": true,
       "printAnnotationsAsComments": false,
@@ -897,7 +897,7 @@
       "includePromptsInCopy": false
     },
     "groupedCodeBlocks": {
-      "rememberTabState": true,
+      "rememberTabState": false,
       "persistence": "session",
       "showAddRemoveButtons": true
     },

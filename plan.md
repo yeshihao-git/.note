@@ -19,7 +19,6 @@ kanban-plugin: board
 
 ## 今日进行中
 
-- [ ] obsidian：导出没有空行问题
 - [ ] obsidian：手机同步笔记
 
 
