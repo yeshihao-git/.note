@@ -52,12 +52,8 @@ body>div.app-container>div.horizontal-main-container>div>div.workspace-ribbon.si
     width: max-content !important;
 }
 
-/* 表格 上色（编辑模式+阅读模式）*/
+/* 表格 上色 */
 .cm-table-widget.markdown-rendered>div>table>thead {
-    background-color: #FC8DC21A;
-}
-
-.markdown-reading-view table thead tr {
     background-color: #FC8DC21A;
 }
 
@@ -70,25 +66,15 @@ body>div.app-container>div.horizontal-main-container>div>div.workspace-ribbon.si
     padding-inline-start: unset;
 }
 
-/* 有序列表 颜色（编辑模式+阅读模式）*/
+/* 有序列表 颜色 */
 .cm-formatting-list-ol {
     color: #f00094 !important;
     font-weight: bold;
 }
 
-.markdown-reading-view ol>li::marker {
-    color: #f00094;
-    font-weight: bold;
-}
-
-
-/* 无序列表 颜色（编辑模式+阅读模式）*/
+/* 无序列表 颜色 */
 .list-bullet::after {
     background-color: #f00094 !important;
-}
-
-.markdown-reading-view ul>li::marker {
-    color: #f00094;
 }
 
 /* 任务列表 去掉前缩进 */
@@ -111,7 +97,6 @@ input[type="checkbox"] {
 }
 
 /* 1-6级标题 字体色 */
-/* 编辑模式 */
 .cm-header-1 {
     color: #E64553 !important;
 }
@@ -134,31 +119,6 @@ input[type="checkbox"] {
 
 .cm-header-6 {
     color: #8938EF !important;
-}
-
-/* 预览模式 */
-.markdown-reading-view h1 {
-    color: #E64553;
-}
-
-.markdown-reading-view h2 {
-    color: #FE640C;
-}
-
-.markdown-reading-view h3 {
-    color: #DF8E1D;
-}
-
-.markdown-reading-view h4 {
-    color: #40A02B;
-}
-
-.markdown-reading-view h5 {
-    color: #2166F6;
-}
-
-.markdown-reading-view h6 {
-    color: #8938EF;
 }
 
 /* ===============================代码块=============================== */
