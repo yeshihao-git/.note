@@ -178,5 +178,13 @@
       ],
       "key": "`"
     }
+  ],
+  "easylink:find-similar-content": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
+    }
   ]
 }

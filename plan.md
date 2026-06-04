@@ -21,8 +21,6 @@ kanban-plugin: board
 
 - [ ] obsidian：导出没有空行问题
 - [ ] obsidian：手机同步笔记
-- [ ] obsidian：更好用的链接插件（快速链接到标题）
-- [ ] tools：代码片段管理器
 
 
 ## 完成
@@ -32,6 +30,8 @@ kanban-plugin: board
 - [x] docs：颜色空间（RGB、HSV、HSL）、HSV转RGB
 - [x] docs：线性插值
 - [x] docs：[[vtkcpp#2.1 VTK 内部索引|vtk内部索引]]
+- [x] tools：代码片段管理器
+- [x] obsidian：更好用的链接插件（快速链接到标题）
 
 
 

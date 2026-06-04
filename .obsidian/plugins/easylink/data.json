@@ -1,0 +1,11 @@
+{
+  "foldersToIgnore": [
+    "roam/assets",
+    "roam/template"
+  ],
+  "maxResults": 25,
+  "minScore": 0.1,
+  "useDefaultStopwords": true,
+  "customStopwords": [],
+  "searchCurrentFile": true
+}
