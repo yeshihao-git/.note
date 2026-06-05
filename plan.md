@@ -1,5 +1,7 @@
 ---
+
 kanban-plugin: board
+
 ---
 
 ## 待办
@@ -17,19 +19,19 @@ kanban-plugin: board
 
 ## 今日进行中
 
-- [ ] bilibili：稍后再看内容
 
 
 ## 完成
 
 **Complete**
-- [x] 软件架构设计书籍
 
 
 ***
 
 ## Archive
 
+- [x] bilibili：稍后再看内容
+- [x] 软件架构设计书籍
 - [x] 笔记本电脑添加硅脂
 - [x] understand-anything
 - [x] cc-switch

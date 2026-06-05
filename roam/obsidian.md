@@ -12,6 +12,9 @@ tags:
 ![[Pasted image 20260528144412.png|389]]
 3. 选择自己的 笔记文件夹
 4. chrome 中安装扩展 `obsidian web clipper`
+5. `Copilot` 插件的免费模型 API key 推荐：
+	- `OpenRouter` 上的免费模型
+	- `google ai studio` 中的 `gemma`
 
 ## 快捷键
 

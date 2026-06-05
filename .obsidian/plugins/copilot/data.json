@@ -24,7 +24,7 @@
   "githubCopilotToken": "",
   "githubCopilotTokenExpiresAt": 0,
   "defaultChainType": "llm_chain",
-  "defaultModelKey": "z-ai/glm-4.5-air:free|openrouterai",
+  "defaultModelKey": "gemma-4-31b-it|google",
   "embeddingModelKey": "openai/text-embedding-3-small|openrouterai",
   "temperature": 0.1,
   "maxTokens": 6000,
@@ -346,6 +346,18 @@
     {
       "name": "moonshotai/kimi-k2.6:free",
       "provider": "openrouterai",
+      "enabled": true,
+      "apiKey": ""
+    },
+    {
+      "name": "google/gemma-4-31b-it:free",
+      "provider": "openrouterai",
+      "enabled": true,
+      "apiKey": ""
+    },
+    {
+      "name": "gemma-4-31b-it",
+      "provider": "google",
       "enabled": true,
       "apiKey": ""
     }
