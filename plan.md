@@ -11,7 +11,6 @@ kanban-plugin: board
 - [ ] 电瓶车换电池 @{2026-06-15}
 - [ ] 电动车牌上交签字 @{2026-06-15}
 - [ ] 找人帮领毕业证 @{2026-06-16}
-- [ ] book：架构整洁之道
 - [ ] book：架构师修炼之道
 - [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
 - [ ] 研究肌肉，锻炼肌肉
@@ -19,6 +18,7 @@ kanban-plugin: board
 
 ## 今日进行中
 
+- [ ] book：架构整洁之道
 
 
 ## 完成

@@ -186,5 +186,14 @@
       ],
       "key": "Q"
     }
-  ]
+  ],
+  "workspaces:load": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "E"
+    }
+  ],
+  "markdown:toggle-preview": []
 }
