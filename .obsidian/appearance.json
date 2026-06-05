@@ -5,5 +5,5 @@
   ],
   "accentColor": "#fc8dc2",
   "theme": "moonstone",
-  "showRibbon": true
+  "showRibbon": false
 }
