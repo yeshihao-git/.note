@@ -11,6 +11,7 @@ tags:
 2. 选择 打开本地仓库
 ![[Pasted image 20260528144412.png|389]]
 3. 选择自己的 笔记文件夹
+4. chrome 中安装扩展 `obsidian web clipper`
 
 ## 快捷键
 

@@ -80,7 +80,7 @@ const handleClick = () => emit('ok')
 </script>
 ```
 
-### 区别：`<style>` 和 `<style scoped>
+### 区别：`<style>` 和 `<style scoped>`
 `
 - `<style>`：**全局样式**，作用于整个项目所有组件
 - `<style scoped>`：**局部样式**，**只作用于当前组件**，不会污染其他组件
