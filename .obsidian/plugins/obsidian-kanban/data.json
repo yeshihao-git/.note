@@ -3,5 +3,6 @@
   "tag-colors": [],
   "move-dates": false,
   "show-relative-date": true,
-  "date-colors": []
+  "date-colors": [],
+  "tag-action": "kanban"
 }
