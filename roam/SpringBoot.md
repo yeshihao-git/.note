@@ -74,6 +74,14 @@ WebSocket 用 @ServerEndpoint + @OnMessage
 | `exception`                   | 全局异常处理 | 统一捕获报错                      |
 | `common`                      | 公共模块   | 公共常量、枚举、通用类                 |
 
+## SpringBoot 后端分层规范
+
+| 对象        | 名称     | 作用           |
+| --------- | ------ | ------------ |
+| PO/Entity | 持久化对象  | 一对一映射数据库表    |
+| DTO       | 数据传输对象 | 跨层 / 跨系统传输数据 |
+| VO        | 视图对象   | 封装页面展示数据     |
+
 # target 文件夹中有什么？
 
 **target 文件夹**：Spring Boot / Maven 项目里自动生成的 编译产物输出目录。包含以下内容：
@@ -104,3 +112,4 @@ mvn clean   # 删除 target 文件夹
 mvn compile # 生成 target/classes
 mvn package # 生成 可运行的 jar 包
 ```
+

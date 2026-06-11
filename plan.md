@@ -18,6 +18,7 @@ kanban-plugin: board
 - [ ] docs：设计模式
 - [ ] 重写所有设计模式
 - [ ] 计算机图形学
+- [ ] ai agent学习。github：learn-claude-code
 
 
 ## 待办
@@ -27,15 +28,14 @@ kanban-plugin: board
 - [ ] 电动车牌上交签字 @{2026-06-15}
 - [ ] 找人帮领毕业证 @{2026-06-16}
 - [ ] 电瓶车换电池 @{2026-06-21}
+- [ ] 领取毕业证、学位证等 @{2026-06-25}
 - [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
 - [ ] learn：vtk api（学习性测试）
+- [ ] todo内容完成
 
 
 ## 今日进行中
 
-- [ ] book：架构整洁之道 @{2026-06-12}
-	- [x] 看完书
-	- [ ] 完成笔记
 
 
 ***
@@ -48,6 +48,11 @@ kanban-plugin: board
 - [x] understand-anything
 - [x] cc-switch
 - [x] codex
+- [x] book：架构整洁之道 @{2026-06-12}
+	- [x] 看完书
+	- [x] 完成笔记
+- [x] 寄快递 @{2026-06-11} @@{13:00}
+- [x] 离校手续办理 @{2026-06-12}
 
 %% kanban:settings
 ```
