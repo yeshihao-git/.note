@@ -53,16 +53,7 @@ squash e4f5g6h 第二个提交信息 # squash = 把这个 commit 合并到上一
 4. 保存退出，接下来会打开另一个文件
 5. 删除不需要的旧提交信息，保存退出
 
-## git走代理
-
-git不会自动继承系统环境变量（linux终端走代理），需要单独设置git代理，这里设置的 git用户级配置
-```bash
-git config --global http.proxy "http://127.0.0.1:7890"   # 设置http代理
-git config --global https.proxy "http://127.0.0.1:7890"  # 设置https代理
-git config --global --list                               # 检查是否设置成功
-```
-
-## git远程仓库commit覆盖本地commit
+## git 远程仓库commit覆盖本地commit
 
 ```bash
 git fetch

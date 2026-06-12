@@ -16,7 +16,7 @@ kanban-plugin: board
 - [ ] book：架构师修炼之道
 - [ ] 研究肌肉，锻炼肌肉
 - [ ] docs：设计模式
-- [ ] 重写所有设计模式
+	> 重写所有设计模式
 - [ ] 计算机图形学
 - [ ] ai agent学习。github：learn-claude-code
 
@@ -25,17 +25,25 @@ kanban-plugin: board
 
 - [ ] [[ecad相关]]
 	- [ ] 理解需求，给出思路
+- [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
+- [ ] learn：vtk api（学习性测试）
 - [ ] 电动车牌上交签字 @{2026-06-15}
 - [ ] 找人帮领毕业证 @{2026-06-16}
 - [ ] 电瓶车换电池 @{2026-06-21}
 - [ ] 领取毕业证、学位证等 @{2026-06-25}
-- [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
-- [ ] learn：vtk api（学习性测试）
-- [ ] todo内容完成
+- [ ] github：svpng
+- [ ] github：lsh
+- [ ] github：inih
+- [ ] github：log.c
+- [ ] github：spdlog
+- [ ] 火山引擎 coding plan
+- [ ] 设计模式：refactoring.Guru
 
 
 ## 今日进行中
 
+- [ ] todo标签 内容完成
+- [ ] 搭建wsl开发环境
 
 
 ***

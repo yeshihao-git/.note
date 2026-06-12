@@ -24,6 +24,8 @@ wsl --version
 wsl --install -d Ubuntu-22.04
 ```
 
+2. [[zsh#zsh 配置|配置 zsh]]
+
 ## vscode 远程连接 wsl
 
 1. 安装 `WSL` 插件  
@@ -39,12 +41,6 @@ code
 
 3. 连接成功  
 ![[Pasted image 20260410104240.png]]
-
----
-
-**参考**：  
-[wsl2 非系统盘下安装ubuntu22.04的极简方法](https://www.cnblogs.com/go17/p/19008703)  
-[Windows 10 离线安装 WSL2 Ubuntu 22.04.5 LTS 简明教程 - 踩坑及解决方案](https://zhuanlan.zhihu.com/p/23836826798)
 
 # 编译调试 C++ 代码
 ## 前置条件
@@ -116,7 +112,6 @@ target_link_libraries(hello_qt Qt5::Core Qt5::Widgets) # 将 Qt5 的 Core 和 Wi
 ![[Pasted image 20260413111338.png|307]]
 
 ## 编译 C++ 代码
-
 ### 使用 命令行 编译
 #### 方式1：gcc
 
@@ -268,7 +263,8 @@ q
 
 ---
 
-**参考**：[vscode官方文档](https://code.visualstudio.com/docs/cpp/launch-json-reference)
+**参考**：
+- [vscode官方文档](https://code.visualstudio.com/docs/cpp/launch-json-reference)
 
 # 编译调试 Java 代码
 ## 使用 vscode 编译调试
@@ -297,7 +293,8 @@ q
 
 ---
 
-**参考**：[vscode官方文档](https://code.visualstudio.com/docs/java/java-debugging)
+**参考**：
+- [vscode官方文档](https://code.visualstudio.com/docs/java/java-debugging)
 
 # Java 调用 C++ 动态库
 ## 方法1：通过 JNI 调用 C++ 代码
@@ -362,7 +359,8 @@ g++ -shared -fPIC -o libnative.so com_baeldung_jni_HelloWorldJNI.o -lc
 
 ---
 
-**参考**：[JNI官方文档](https://www.baeldung.com/jni)
+**参考**：
+- [JNI官方文档](https://www.baeldung.com/jni)
 
 ## 方法2：通过 SWIG 调用 C++ 代码
 ### 前置条件
@@ -456,7 +454,8 @@ java -Djava.library.path=. main
 
 ---
 
-**参考**：[SWIG Basics](https://www.swig.org/Doc4.4/SWIGDocumentation.html#SWIG) 
+**参考**：
+- [SWIG Basics](https://www.swig.org/Doc4.4/SWIGDocumentation.html#SWIG) 
 
 #### 方法2：cmake
 
@@ -529,7 +528,14 @@ cmake --build build
 
 ---
 
-**参考**：[cmake命令行](https://cmake.org/cmake/help/v3.22/manual/cmake.1.html#run-a-command-line-tool) [FindSWIG](https://cmake.org/cmake/help/latest/module/FindSWIG.html) [UseSWIG](https://cmake.org/cmake/help/latest/module/UseSWIG.html#module:UseSWIG) [FindJava](https://cmake.org/cmake/help/latest/module/FindJava.html) [FindJNI](https://cmake.org/cmake/help/latest/module/FindJNI.html)  [add_custom_command](https://cmake.org/cmake/help/latest/command/add_custom_command.html#command:add_custom_command) [add_custom_target](https://cmake.org/cmake/help/latest/command/add_custom_target.html#command:add_custom_target)
+**参考**：
+- [cmake命令行](https://cmake.org/cmake/help/v3.22/manual/cmake.1.html#run-a-command-line-tool)
+- [FindSWIG](https://cmake.org/cmake/help/latest/module/FindSWIG.html)
+- [UseSWIG](https://cmake.org/cmake/help/latest/module/UseSWIG.html#module:UseSWIG)
+- [FindJava](https://cmake.org/cmake/help/latest/module/FindJava.html)
+- [FindJNI](https://cmake.org/cmake/help/latest/module/FindJNI.html) 
+- [add_custom_command](https://cmake.org/cmake/help/latest/command/add_custom_command.html#command:add_custom_command)
+- [add_custom_target](https://cmake.org/cmake/help/latest/command/add_custom_target.html#command:add_custom_target)
 
 ### 使用 vscode 编译
 #### 方法1：gcc

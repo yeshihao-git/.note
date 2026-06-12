@@ -1,6 +1,7 @@
 ---
 tags:
   - 工具
+  - 网络代理
 ---
 # clash verge rev
 
@@ -17,14 +18,6 @@ clash verge 的分支重构版
 [山海](https://shanhai.me/#/dashboard)
 [魔戒](https://mojie.app/login)
 [百合电信](https://www.yuritele.com/auth/login)
-
-## clash同一局域网内连另一台机器的代理
-
-1. 机器A 和 机器B 在 同一局域网
-2. 在 机器A 中的 代理 clash verge 中 打开局域网连接
-3. 机器B 以 linux终端走代理 的方式连接
-	 - IP  ：机器A的IP
-	- PORT：clash verge 的端口
 
 ## 关闭 clash 系统代理后退出，QQ能上网但浏览器无法上网问题
 
