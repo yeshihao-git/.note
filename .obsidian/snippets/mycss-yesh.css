@@ -37,6 +37,11 @@ body>div.app-container>div.horizontal-main-container>div>div.workspace-ribbon.si
     background-color: #FC8DC21A;
 }
 
+/* 底部状态栏 隐藏 */
+.status-bar {
+    display: none;
+}
+
 /* 右上角 最小化、窗口化、关闭 背景色 */
 .workspace-tab-header-container::after {
     background-color: #ffffff;

@@ -1,7 +1,6 @@
 ---
 tags:
   - 工具
-  - shell
 ---
 # zsh
 

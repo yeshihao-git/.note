@@ -8,12 +8,22 @@ tags:
 **what**：
 构建系统生成器
 
-**why**：
-基于 **项目**、**环境**、**用户提供的配置信息** 生成构建系统
+```zsh
+cd <项目目录>
+
+# 创建 build 目录，使用 Ninja 构建系统，设置构建类型，设置安装前缀（linux 默认为 /usr/local）
+cmake -B build [-G Ninja] [-DCMAKE_BUILD_TYPE=XXX] [-DCMAKE_INSTALL_PREFIX=XXX]
+
+# 编译 build 文件夹中的项目，安装
+cmake --build build [--target install]
+
+# 运行项目
+./build/<可执行文件> 
+```
 
 ## 四个阶段
 
-`cmake -B build [-G Ninja] [-DCMAKE_BUILD_TYPE=XXX] [-DCMAKE_INSTALL_PREFIX=XXX=]`
+`cmake -B build [-G Ninja] [-DCMAKE_BUILD_TYPE=XXX] [-DCMAKE_INSTALL_PREFIX=XXX]`
 - **配置阶段**：获取项目、环境、用户提供的配置信息，生成 `CMakeCache.txt`，此阶段生成器表达式只会被当成字符串
 - **生成阶段**：根据选择的生成器生成实际的构建文件；多阶段配置在这一步区分
 
@@ -34,7 +44,7 @@ tags:
 | 环境变量 |                              |                           | $ENV{}   |
 
 父模块定义的变量 会 传递给子模块，子模块定义的变量 不会 传递给父模块；
-设置子传父：通过在子模块中 set(<变量> <值> PARENT_SCOPE)
+设置子传父：通过在子模块中 `set(<变量> <值> PARENT_SCOPE)`
 
 #### 伪目标和真实目标
 
@@ -44,7 +54,7 @@ add_custom_target
 
 **what**：真实目标
 生成可执行文件、库或输出文件，用于编译代码、链接库
-add_executable= / =add_library
+add_executable / add_library
 
 #### 缓存生成机制
 
@@ -115,7 +125,7 @@ message([<mode>] "message" ...) # <mode> 用于指定消息类型
 |WARNING|(黄色字体带警告) message|
 |FATAL_ERROR|(红色字体终止运行) message|
 
-### 查找库
+### 三方库配置
 #### find_package
 
 **what**：
@@ -194,9 +204,49 @@ install(TARGETS myapp
 )
 ```
 
-# CMakeCache.txt
+## CMakeCache.txt
 
 cmake的缓存文件，包含以下内容：
 1. set设置的缓存变量，可以使用 ccmake命令行工具 可视化查看/编辑
 2. find_package找到的库文件信息
 3. 环境信息（编译器、操作系统等）
+
+```zsh
+# 目标系统默认安装前缀。Linux 默认值：`/usr/local`
+CMAKE_INSTALL_PREFIX
+
+# 可执行程序目录
+CMAKE_INSTALL_BINDIR      # 默认 bin
+# 库文件目录
+CMAKE_INSTALL_LIBDIR      # 默认 lib
+# 头文件目录
+CMAKE_INSTALL_INCLUDEDIR  # 默认 include
+
+
+
+#-------------------------------------------------------#
+# /usr/local/include
+${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}
+
+# /usr/local/lib
+${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}
+
+# /usr/local/bin
+${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}
+```
+
+
+```zsh
+# 可执行程序、Windows动态库dll
+CMAKE_RUNTIME_OUTPUT_DIRECTORY
+
+# 静态库 .a / .lib
+CMAKE_ARCHIVE_OUTPUT_DIRECTORY
+
+# Linux/macOS 动态库 .so / .dylib
+CMAKE_LIBRARY_OUTPUT_DIRECTORY
+```
+
+## cmake 项目架构
+
+![[cmake 项目架构]]

@@ -11,7 +11,7 @@
   "easylink",
   "better-export-pdf",
   "obsidian-git",
-  "obsidian-excalidraw-plugin",
   "copilot",
-  "pdf-plus"
+  "pdf-plus",
+  "obsidian-excalidraw-plugin"
 ]

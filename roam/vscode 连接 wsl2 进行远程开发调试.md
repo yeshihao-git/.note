@@ -42,232 +42,86 @@ code
 3. 连接成功  
 ![[Pasted image 20260410104240.png]]
 
-# 编译调试 C++ 代码
-## 前置条件
+# 编译调试 C++ 代码（cmake 项目）
 
-0. 项目结构
-```
-.
-├── CMakeLists.txt
-└── main.cpp
+1. 安装依赖 
+```zsh
+sudo apt install -y build-essential gdb cmake
 ```
 
-1. 安装相关依赖
+2.  `vscode` 中安装 `C++` 相关插件  
+![[Pasted image 20260613131213.png|322]]
+![[Pasted image 20260613131136.png|325]]
+
+3. `Ctrl+Shift+p` 选择 `CMake: Quick Start` 进行一系列配置后生成 `CMakeLists.txt` 、`CMakePresets.json`
+
+4. 在左侧 cmake 工具栏中点击相应按钮即可编译、调试
+![[Pasted image 20260613172515.png|280]]
+
+5. 项目结构与各级 `CMakeLists.txt` 编写，参考 [[cmake 项目架构#复杂项目|cmake 架构]]
+
+> **普通 C++ 项目编译调试**
+> - vscode：[[vscode#vscode 编译调试 C++ 项目|vscode 编译调试 C++ 项目]]
+> - 命令行：[[编译流程#使用 gcc 进行编译|使用 gcc 进行编译]] [[vscode#gdb 调试 C++ 项目|gdb 调试 C++ 项目]]
+> 
+> **cmake 项目**
+> - 命令行：[[cmake]]
+
+## 番外篇：使用 Trae 调试 C++
+
+1. 命令行中安装 `lldb`
 ```bash
-sudo apt install -y build-essential cmake qtbase5-dev qtchooser qt5-qmake qttools5-dev
+sudo apt update 
+sudo apt install lldb
 ```
 
-2. 示例代码
-```C++
-// main.cpp 文件
+2. `Trae` 中安装插件
+![[Pasted image 20260506172653.png|345]]
 
-#include <QApplication>
-#include <QPushButton>
-#include <iostream>
-
-int main(int argc, char *argv[])
+3. 编写 `launch.json`（注意删除 gdb 相关的配置）
+```js
 {
-    QApplication app(argc, argv);
+    "version": "0.2.0",
+    "configurations": [
+        // 调试 Vue
+        {
+            "name": "调试Vue前端",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/src/*"
+            }
+        },
 
-    QPushButton button("Hello Qt WSL!");
-    button.resize(200, 100);
-    button.show();
-    
-    int a = 1, b = 2;
-    
-    std::cout << "hello world" << std::endl;
-    std::cout << a + b << std::endl;
-
-    return app.exec();
+        // 调试 Java (wsl)
+        {
+            "name": "调试Java后端",
+            "type": "java",
+            "request": "launch",  
+            "jarPath": "${workspaceFolder}/target/inteCAEServer-1.0.0.jar",
+            "vmArgs": "-Djava.library.path=/mnt/c/Users/HP/code/test/IntevueServer/build/bin"
+        },
+        
+        // 调试 C++ (wsl)
+        {
+            "name": "Attach to Java Process",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "/usr/bin/java",
+            "processId": "${command:pickProcess}",
+            "additionalSOLibSearchPath": "${workspaceFolder}/IntevueServer/build/bin",
+            "sourceFileMap": {
+                "/build/": "${workspaceFolder}/IntevueServer/build"
+            }
+        }
+    ]
 }
 ```
 
-3. 在项目根目录编写 `CMakeLists.txt`
-```cmake
-cmake_minimum_required(VERSION 3.22) # 确定 cmake 版本
-
-# 新建一个 cmake 项目
-# LANGUAGES 指定启用的语言，默认启用 C 和 CXX（C++）
-# 这里指定启用 CXX，不启用 C，减少项目生成时间
-project(hello_qt LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 17) # 设置 C++ 标准为 C++17
-set(CMAKE_CXX_STANDARD_REQUIRED ON) # 强制使用 C++17 标准
-
-set(CMAKE_AUTOMOC ON) # 启用自动 MOC 功能
-set(CMAKE_AUTORCC ON) # 启用自动 RCC 功能
-set(CMAKE_AUTOUIC ON) # 启用自动 UIC 功能
-
-find_package(Qt5 COMPONENTS Core Widgets REQUIRED) # 查找 Qt5 的 Core 和 Widgets 模块
-
-add_executable(hello_qt) # 添加可执行文件
-
-target_sources(hello_qt PRIVATE main.cpp) # 将 main.cpp 添加到 hello_qt 可执行文件的源文件列表中
-
-target_link_libraries(hello_qt Qt5::Core Qt5::Widgets) # 将 Qt5 的 Core 和 Widgets 模块链接到 hello_qt 可执行文件中
-```
-
-4. `vscode` 中安装 `C++` 相关插件  
-![[Pasted image 20260413111317.png]]  
-![[Pasted image 20260413111338.png|307]]
-
-## 编译 C++ 代码
-### 使用 命令行 编译
-#### 方式1：gcc
-
-1. 使用 `gcc` 进行编译
-``` bash
-g++ -fPIC main.cpp -o qt-test \ 
--I/usr/include/x86_64-linux-gnu/qt5 \ 
--I/usr/include/x86_64-linux-gnu/qt5/QtCore \ 
--I/usr/include/x86_64-linux-gnu/qt5/QtGui \ 
--I/usr/include/x86_64-linux-gnu/qt5/QtWidgets \ 
--lQt5Core -lQt5Gui -lQt5Widgets
-# 可以发现这样执行头文件路径、链接库文件的方式较为繁琐，可考虑使用 pkg-config 简化
-```
-
-2. 运行程序
-```C++
-./qt-test
-```
-
-3. 最终效果  
-![[Pasted image 20260410135812.png]]
-
----
-
-**补充说明**：
-```bash
-g++ -std=<C++标准> -g <源文件路径> -o <可执行文件路径> \
-    -I<头文件路径> \
-    -L<库文件路径> \
-    -l<库名>
-```
-- `-std`：指定 C++ 标准
-- `-g`：生成调试信息
-- `-o`：指定输出的可执行文件名
-- `-I`：指定头文件路径
-- `-L`：指定库文件路径
-- `-l`：指定库名（eg：若库文件名是 `libvtk.so`，则写成 `-lvtk`，省去前面的 `lib` 和后缀）
-- `-fPIC`：位置无关编码。在制作动态库时使用，其次在编译 `PIE` 可执行文件时必须使用 `PIC` 代码
-- `-O<级别>`：优化级别
-
-> **PIE（Position-Independent Executable）**：位置无关可执行文件，一种安全机制，让程序每次加载到内存的位置都不一样。若要生成 `PIE` 程序，则所有代码必须是位置无关（`PIC`）。现代64位 `linux` 全部默认开启 `PIE`。
-
-#### 方法2：cmake
-
-1. 使用 `cmake` 命令行工具进行构建、运行
-```bash
-cd <项目目录>
-
-# 创建目录 build 并在其中生成 Ninja 构建系统文件
-cmake -B build -G Ninja 
-
-# 使用构建工具 Ninja 编译 build 文件夹中的项目
-cmake --build build 
-
-# 运行项目
-./build/<可执行文件> 
-```
-
-### 使用 vscode 编译
-#### 方式1：gcc
-
-1. 配置 `IntelliSence`：`Ctrl +Shift + p` 打开命令面板  
-![[Pasted image 20260410142041.png|449]]  
-在包含路径中输入头文件路径  
-![[Pasted image 20260410142427.png]]
-
-2. 配置 `tasks.json`：`vscode` 右上角选择 “运行 `C/C++` 文件”  
-![[Pasted image 20260410143125.png]]  
-![[Pasted image 20260410143130.png]]  
-此时出现错误，因为我们还没进行头文件路径执行、链接库等操作  
-![[Pasted image 20260410143135.png]]  
-打开 `tasks.json`  
-![[Pasted image 20260410143411.png]]  
-指定头文件路径，链接库  
-![[Pasted image 20260410143543.png]]  
-重新点击`vscode` 右上角 “运行 `C/C++` 文件”  
-
-> **tasks.json**：编译任务文件，`vscode` 编译代码用 配置文件
-> 
-> **c_cpp_properties.json**：`C++` 编辑配置文件（配置 `IntelliSence`时的相关信息就在这里）
-
-#### 方式2：cmake
-
-![[Pasted image 20260413102707.png]]  
-点击左侧边栏 `CMake` 图标后，即可进行配置、生成、测试、调试、启动等操作。
-
-也可以通过 `Ctrl + Shift + p` 打开命令面板后选择 `CMake` 相关命令：`cmake build`、`cmake run`、`cmake debug`、`cmake clean` 等。
-
-## 调试 C++ 代码
-### 使用 命令行 调试
-
-1. 配置调试信息、优化级别： `gcc` 中增加 `-g` 、`-O0` 选项
-
-2. 使用 `gdb` 进行调试
-```bash
-gdb <可执行文件/core dump文件> # 启动 gdb 并加载程序 / core dump
-gdb -p <PID> # 启动 gdb 并附加到正在运行的进程
-```
-
-3. `gdb` 常用操作
-```bash
-l # 查看源码
-bt # 查看调用栈
-f # 切换栈帧
-b # 打断点
-r # 运行/重新运行
-n # 单步执行（不进入函数）
-s # 单步执行（进入函数）
-f # 从函数返回
-c # 继续
-q # 退出 gdb
-p # 打印/修改变量
-```
-
----
-
-**具体调试示例**：调试 `core dump`
-```bash
-# 1. 启动 gdb 并打开 core dump文件
-gdb <core dump文件>
-# 2. 查看调用栈信息
-bt 
-# 3. 查看崩溃点
-# 4. 打印变量值
-p <变量>
-# 5. 修改后重新测试
-r
-# 6. 没问题后退出 gdb
-q
-```
-
-> **core dump**：`core dump` 文件为程序崩溃时的内存快照，用于分析程序崩溃原因
-
-### 使用 vscode 调试
-
-`vscode` 新版 `C/C++` 插件无需手写 `launch.json` 就能一键调试了
-![[Pasted image 20260410155840.png]]
-1. 打断点
-
-2. 点击右上角 “调试 C/C++ 文件”
-
-3. 上方出现调试面板：继续、逐过程、单步调试、单步跳出、重启、停止
-
-4. 左侧用于查看：局部变量、监视变量变化、调用栈信息、断点信息等
-
-5. 下方为终端输出，用于查看：日志信息
-
-> **launch.json**：调试任务文件，`vscode` 调试代码用 配置文件
-
----
-
-**参考**：
-- [vscode官方文档](https://code.visualstudio.com/docs/cpp/launch-json-reference)
-
 # 编译调试 Java 代码
-## 使用 vscode 编译调试
 
 1. `vscode` 中安装 `Java` 相关插件  
 ![[Pasted image 20260413111521.png]]  
@@ -291,13 +145,8 @@ q
 3. 在右上角选择 `Run Java` 进行编译，选择 `Debug Java` 进行 `debug`  
 ![[Pasted image 20260413112108.png]]  
 
----
-
-**参考**：
-- [vscode官方文档](https://code.visualstudio.com/docs/java/java-debugging)
-
-# Java 调用 C++ 动态库
-## 方法1：通过 JNI 调用 C++ 代码
+## Java 调用 C++ 动态库
+### 方法1：通过 JNI 调用 C++ 代码
 
 1. 创建带有 `native` 方法的 `Java` 类
 ```java
@@ -343,8 +192,6 @@ g++ -c -fPIC -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux com_baeldung_jn
 g++ -shared -fPIC -o libnative.so com_baeldung_jni_HelloWorldJNI.o -lc
 ```
 
----
-
 **补充说明**：代码中的 `JNI` 元素
 
 `Java` 侧元素：
@@ -362,8 +209,8 @@ g++ -shared -fPIC -o libnative.so com_baeldung_jni_HelloWorldJNI.o -lc
 **参考**：
 - [JNI官方文档](https://www.baeldung.com/jni)
 
-## 方法2：通过 SWIG 调用 C++ 代码
-### 前置条件
+### 方法2：通过 SWIG 调用 C++ 代码
+#### 前置条件
 
 0. 项目结构
 ```
@@ -430,8 +277,8 @@ extern int my_mod(int x, int y);
 extern char *get_time();
 ```
 
-### 使用 命令行 编译
-#### 方法1：gcc
+#### 使用 命令行 编译
+##### 方法1：gcc
 
 ```bash
 # 1. 生成 JNI 包装代码
@@ -457,7 +304,7 @@ java -Djava.library.path=. main
 **参考**：
 - [SWIG Basics](https://www.swig.org/Doc4.4/SWIGDocumentation.html#SWIG) 
 
-#### 方法2：cmake
+##### 方法2：cmake
 
 1. 编写 `CMakeLists.txt` 
 ```cmake
@@ -537,24 +384,24 @@ cmake --build build
 - [add_custom_command](https://cmake.org/cmake/help/latest/command/add_custom_command.html#command:add_custom_command)
 - [add_custom_target](https://cmake.org/cmake/help/latest/command/add_custom_target.html#command:add_custom_target)
 
-### 使用 vscode 编译
-#### 方法1：gcc
+#### 使用 vscode 编译
+##### 方法1：gcc
 
 不推荐，略  
 
-#### 方法2：cmake
+##### 方法2：cmake
 
 基于 [[#4.2.1 环境配置和示例代码]] 中的 `CMakeLists.txt`，在 `vscode` 中点击左侧 `CMake` 后，选择 生成 即可  
 ![[Pasted image 20260414115351.png]]
 
-# 调试 vue 代码
+# 编译调试 Vue 代码
 
-1. chrome 下载 Vue DevTools 插件
+1. `chrome` 下载 `Vue DevTools` 插件
 
-2. 下载 vscode 插件
+2. 下载 `vscode` 插件
 ![[Pasted image 20260423134301.png]]
 
-3. 在 vite.config.js 开启 SourceMap
+3. 在 `vite.config.js` 开启 `SourceMap`
 ```js
 export default defineConfig( ( { mode } ) => {
   return {
@@ -566,7 +413,7 @@ export default defineConfig( ( { mode } ) => {
 } );
 ```
 
-4. 编写 launch.json
+4. 编写 `launch.json`
 ```js
 {
   // 调试配置列表（当前生效的配置）
@@ -588,13 +435,17 @@ export default defineConfig( ( { mode } ) => {
 }
 ```
 
-5. 通过 npm run dev 启动后，即可使用 vscode 进行 debug
+5. 通过 `npm run dev` 启动后，即可使用 `vscode` 进行 `debug`
 
-> **SourceMap**：打包压缩后的代码 <---映射---> 原始源码，用于调试
+> **SourceMap**：
+> 打包压缩后的代码 <---映射---> 原始源码，用于调试
 
-# 调试 C++ 动态库（一个综合联调示例）
+# 同时调试 Vue、Java、C++ 代码
 
-本节介绍的项目流程为：用户上传 `.fem` 模型文件到 `Vue` 前端 ，`Vue` 前端传给 `Java` 后端，`Java` 后端调用 `C++` 数据处理模块生成 `.vtp` 文件返回给 `Java` 后端，`Java` 后端返回给 `Vue` 前端并显示。项目结构如下：
+**项目流程**：
+用户上传 `.fem` 模型文件到 `Vue` 前端 ，`Vue` 前端传给 `Java` 后端，`Java` 后端调用 `C++` 数据处理模块生成 `.vtp` 文件返回给 `Java` 后端，`Java` 后端返回给 `Vue` 前端并显示
+
+**项目结构**：
 ```bash
 .
 ├── IntevueServer
@@ -687,58 +538,4 @@ sudo sysctl -w kernel.yama.ptrace_scope=0
 5. 最终效果：实现一个 vscode 窗口同时调试 Java、C++ 代码
    ![[Pasted image 20260424104217.png|329]] 
 
-
-# 番外篇：使用 Trae 调试 C++
-
-1. 命令行中安装 lldb
-```bash
-sudo apt update 
-sudo apt install lldb
-```
-
-2. Trae 中安装插件
-![[Pasted image 20260506172653.png|345]]
-
-3. 编写 `launch.json`（注意删除 gdb 相关的配置）
-```js
-{
-    "version": "0.2.0",
-    "configurations": [
-        // 调试 Vue
-        {
-            "name": "调试Vue前端",
-            "type": "chrome",
-            "request": "launch",
-            "url": "http://localhost:5173",
-            "webRoot": "${workspaceFolder}",
-            "sourceMaps": true,
-            "sourceMapPathOverrides": {
-                "webpack:///src/*": "${webRoot}/src/*"
-            }
-        },
-
-        // 调试 Java (wsl)
-        {
-            "name": "调试Java后端",
-            "type": "java",
-            "request": "launch",  
-            "jarPath": "${workspaceFolder}/target/inteCAEServer-1.0.0.jar",
-            "vmArgs": "-Djava.library.path=/mnt/c/Users/HP/code/test/IntevueServer/build/bin"
-        },
-        
-        // 调试 C++ (wsl)
-        {
-            "name": "Attach to Java Process",
-            "type": "cppdbg",
-            "request": "attach",
-            "program": "/usr/bin/java",
-            "processId": "${command:pickProcess}",
-            "additionalSOLibSearchPath": "${workspaceFolder}/IntevueServer/build/bin",
-            "sourceFileMap": {
-                "/build/": "${workspaceFolder}/IntevueServer/build"
-            }
-        }
-    ]
-}
-```
 

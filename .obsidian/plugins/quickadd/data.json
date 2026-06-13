@@ -46,6 +46,18 @@
       "templater": {
         "afterCapture": "none"
       }
+    },
+    {
+      "id": "46a656a3-0078-47a9-9f3c-570a004f6453",
+      "name": "sdf",
+      "type": "Macro",
+      "command": false,
+      "runOnStartup": false,
+      "macro": {
+        "name": "sdf",
+        "id": "f593df4d-c9d6-4040-b23a-1b66f44fd608",
+        "commands": []
+      }
     }
   ],
   "inputPrompt": "single-line",
