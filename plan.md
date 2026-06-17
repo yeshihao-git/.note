@@ -43,6 +43,7 @@ kanban-plugin: board
 - [ ] docs：命令模式
 - [ ] docs：模板方法模式
 - [ ] docs：策略模式
+- [ ] [如何使用cURL命令？有哪些常见的用法？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1n94y1U7Eu/?spm_id_from=333.1387.collection.video_card.click&vd_source=4441bc96046659b39d059d583f36ff52)
 
 
 ***
