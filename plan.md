@@ -26,24 +26,20 @@ kanban-plugin: board
 - [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
 - [ ] learn：vtk api（学习性测试）
 - [ ] 领取毕业证、学位证等 @{2026-06-25}
+- [ ] 电瓶车换电池 @{2026-06-25}
 - [ ] 电动车牌上交签字 @{2026-06-15}
-- [ ] 电瓶车换电池 @{2026-06-21}
 - [ ] github：svpng
 - [ ] github：lsh
 - [ ] github：inih
 - [ ] github：spdlog
 - [ ] 火山引擎 coding plan
+- [ ] 研究装机：手提机箱
 
 
 ## 今日进行中
 
-- [x] todo标签：[[适配器模式]]
-- [x] docs：单例模式
-- [x] docs：工厂模式
-- [ ] docs：命令模式
-- [ ] docs：模板方法模式
-- [ ] docs：策略模式
-- [ ] [如何使用cURL命令？有哪些常见的用法？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1n94y1U7Eu/?spm_id_from=333.1387.collection.video_card.click&vd_source=4441bc96046659b39d059d583f36ff52)
+- [ ] 了解其他设计模式
+- [ ] vscode 中的 vim 配置
 
 
 ***
@@ -63,6 +59,13 @@ kanban-plugin: board
 - [x] 离校手续办理 @{2026-06-12}
 - [x] [[深蹲]]
 - [x] 搭建wsl开发环境
+- [x] todo标签：[[适配器模式]]
+- [x] docs：单例模式
+- [x] docs：工厂模式
+- [x] docs：命令模式
+- [x] docs：模板方法模式
+- [x] docs：策略模式
+- [x] [如何使用cURL命令？有哪些常见的用法？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1n94y1U7Eu/?spm_id_from=333.1387.collection.video_card.click&vd_source=4441bc96046659b39d059d583f36ff52)
 
 %% kanban:settings
 ```

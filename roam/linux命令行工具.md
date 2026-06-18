@@ -1,6 +1,7 @@
 ---
 tags:
   - linux
+  - 命令行工具
 ---
 # wget
 
@@ -10,7 +11,7 @@ tags:
 **why**：
 解决命令行环境下的下载需求
 
-## wget下载需要登录才能下载的资源
+## wget 下载需要登录才能下载的资源
 
 示例 - 登录 Cityscapes Dataset 网站并下载数据集
 ```bash
@@ -26,21 +27,81 @@ wget --load-cookies cookies.txt --content-disposition https://www.cityscapes-dat
 | --load-cookies=cookies.txt | 使用之前保存的 Cookie 进行身份认证                         |
 | --content-disposition      | 确保使用服务器提供的正确文件名（通常是 Content-Disposition 头部信息） |
 
-# curl
+# ping
 
 **what**：
-网络请求工具
+网络诊断工具
 
 **why**：
-模拟命令行环境下 POST/GET/PUT/DELETE 等 HTTP请求，以及 HTTPS、FTP、SCP等多种协议
+用于测试目标主机是否可达、网络延迟等
+
+**how**：
+发送 `ICMP` 请求包（互联网控制报文协议）到目标，接收并统计目标返回的 ICMP应答包，以此来测试网络连通性、延迟等
+
+# nmcli
+
+**what**：
+NetworkManager的命令行工具，用于网络配置和管理
+
+**why**：
+解决命令行环境下的网络配置和管理需求
+
+# nslookup
+
+**what**：
+DNS分析 命令
 
 ```bash
-curl https://google.com             # 发送GET请求
-curl -X <METHOD> https://google.com # 指定请求方法，如:POST
-curl -I https://google.com          # 查看响应头
-curl -i https://google.com          # 查看响应头+体
-curl -v https://google.com          # 查看请求/响应头
+nslookup twitter.com          # 使用 本地默认DNS服务器 查询 twitter.com 对应 IP
+nslookup twitter.com 8.8.8.8  # 使用 Google公共DNS服务器
+
+# nslookup <域名> [<DNS服务器>]
 ```
+
+## nmcli error：802-11-wireless-security.key-mgmt : property is missing
+
+解决
+```bash
+nmcli connection up <无线网A>
+```
+
+> **问题复现**：
+> 无线网A 突然断开，当我使用 =nmcli device wifi connect 无线A password xxx= 再次连接 A 时，出现上述错误
+
+> **原因**：
+> NetworkManager 存储了 无线网A网络配置 在 connections，通过 =nmcli connection show= 可以找到 A
+
+# nc
+
+**what**：
+命令行网络工具，支持：端口扫描、模拟客户端、模拟服务端等
+（nc是建连接的，ss是看连接的）
+
+```bash
+nc -zv <IP> <端口> # 端口连通性测试
+```
+
+|参数|作用|
+|---|---|
+|-z <IP> <端口>|连通性测试（无数据传输）|
+|-v <IP> <端口>|详细信息|
+
+# telnet
+
+**what**：
+基于Telnet协议的 远程登录 的命令，常用于测试 TCP端口的连通性
+
+```bash
+telnet <主机名/IP> <端口>  # 远程
+```
+
+# nm
+
+**what**：
+符号表信息（函数/变量符号）分析工具，检查库中是否有需要的符号
+
+> **nm与ldd的区别**\
+> 使用ldd发现库正确链接，但出现符号错误，此时就需要用nm分析，库版本可能不对
 
 # tar
 
@@ -69,17 +130,6 @@ tar -cf <压缩包> <文件路径> # 打包
 |gzip|.gz|.tar.gz / .tgz|快|低|
 |bzip2|.bz2|.tar.bz2 / .tbz2 / .tb2|中|中|
 |xz|.xz|.tar.xz / .txz|低|高|
-
-# ping
-
-**what**：
-网络诊断工具
-
-**why**：
-用于测试目标主机是否可达、网络延迟等
-
-**how**：
-发送 ICMP请求包（互联网控制报文协议）到目标，接收并统计目标返回的 ICMP应答包，以此来测试网络连通性、延迟等
 
 # bear
 
@@ -119,27 +169,6 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
 qmake -r                 # 生成 .qmake.stash
 bear -- make - j$(nproc)
 ```
-
-# nmcli
-
-**what**：
-NetworkManager的命令行工具，用于网络配置和管理
-
-**why**：
-解决命令行环境下的网络配置和管理需求
-
-## nmcli error：802-11-wireless-security.key-mgmt : property is missing
-
-解决
-```bash
-nmcli connection up <无线网A>
-```
-
-> **问题复现**：
-> 无线网A 突然断开，当我使用 =nmcli device wifi connect 无线A password xxx= 再次连接 A 时，出现上述错误
-
-> **原因**：
-> NetworkManager 存储了 无线网A网络配置 在 connections，通过 =nmcli connection show= 可以找到 A
 
 # zellij
 
@@ -223,42 +252,6 @@ sudo ss -tulnp | grep <XX> # 查看端口占用
 |-n|不要解析域名|
 |-p|显示关联的 进程名、pid、fd|
 
-# telnet
-
-**what**：
-基于Telnet协议的 远程登录 的命令，常用于测试 TCP端口的连通性
-
-```bash
-telnet <主机名/IP> <端口>  # 远程
-```
-
-# nslookup
-
-**what**：
-DNS分析 命令
-
-```bash
-nslookup twitter.com          # 使用 本地默认DNS服务器 查询 twitter.com 对应 IP
-nslookup twitter.com 8.8.8.8  # 使用 Google公共DNS服务器
-
-# nslookup <域名> [<DNS服务器>]
-```
-
-# nc
-
-**what**：
-命令行网络工具，支持：端口扫描、模拟客户端、模拟服务端等
-（nc是建连接的，ss是看连接的）
-
-```bash
-nc -zv <IP> <端口> # 端口连通性测试
-```
-
-|参数|作用|
-|---|---|
-|-z <IP> <端口>|连通性测试（无数据传输）|
-|-v <IP> <端口>|详细信息|
-
 # sed
 
 **what**：
@@ -329,14 +322,6 @@ ps -ef
 |ps|-e|显示所有进程|
 ||-f|显示完整格式（PPID、启动时间等）|
 ||-H|进程树层级 (进程父子关系)|
-
-# nm
-
-**what**：
-符号表信息（函数/变量符号）分析工具，检查库中是否有需要的符号
-
-> **nm与ldd的区别**\
-> 使用ldd发现库正确链接，但出现符号错误，此时就需要用nm分析，库版本可能不对
 
 # jobs
 
