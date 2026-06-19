@@ -1,6 +1,8 @@
 ---
 tags:
   - 工具
+  - linux
+  - vim
 ---
 # vim
 ## 基础使用
@@ -105,7 +107,7 @@ C-v # 选中块进入可视模式
 ## leetcode vim模式复制文本到系统剪切板
 
 1. 鼠标选中
-2. Ctrl + Insert
+2. `Ctrl + Insert`
 
 ## 多光标批量处理文本
 
