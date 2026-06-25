@@ -23,25 +23,26 @@ kanban-plugin: board
 
 ## 待办
 
-- [ ] [[ecad相关]]
-	- [ ] 理解需求，给出思路
-- [ ] learn：vtk api（学习性测试）
+- [ ] 研究装机：手提机箱
 - [ ] 领取毕业证、学位证等 @{2026-06-25}
 - [ ] 电瓶车换电池 @{2026-06-25}
 - [ ] 电动车牌上交签字 @{2026-06-15}
+- [ ] 了解其他设计模式
+- [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
 - [ ] github：svpng
 - [ ] github：lsh
 - [ ] github：inih
 - [ ] github：spdlog
 - [ ] 火山引擎 coding plan
-- [ ] 研究装机：手提机箱
+- [ ] [[ecad相关]]
+	- [ ] 理解需求，给出思路
+- [ ] learn：vtk api（学习性测试）
 
 
 ## 今日进行中
 
-- [ ] 了解其他设计模式
+- [x] blacksouls2通关
 - [ ] 输入法：Rime
-- [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
 
 
 ***
