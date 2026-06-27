@@ -24,9 +24,6 @@ kanban-plugin: board
 ## 待办
 
 - [ ] 研究装机：手提机箱
-- [ ] 领取毕业证、学位证等 @{2026-06-25}
-- [ ] 电瓶车换电池 @{2026-06-25}
-- [ ] 电动车牌上交签字 @{2026-06-15}
 - [ ] 了解其他设计模式
 - [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
 - [ ] github：svpng
@@ -34,15 +31,14 @@ kanban-plugin: board
 - [ ] github：inih
 - [ ] github：spdlog
 - [ ] 火山引擎 coding plan
-- [ ] [[ecad相关]]
-	- [ ] 理解需求，给出思路
 - [ ] learn：vtk api（学习性测试）
 
 
 ## 今日进行中
 
-- [x] blacksouls2通关
-- [ ] 输入法：Rime
+- [ ] 代码理解
+- [ ] docs：代码相关笔记
+- [ ] feat：剖面
 
 
 ***
@@ -71,6 +67,10 @@ kanban-plugin: board
 - [x] [如何使用cURL命令？有哪些常见的用法？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1n94y1U7Eu/?spm_id_from=333.1387.collection.video_card.click&vd_source=4441bc96046659b39d059d583f36ff52)
 - [x] vscode 中的 vim 配置
 - [x] 练习：vim cheat sheet
+- [x] 领取毕业证、学位证等 @{2026-06-25}
+- [x] 电瓶车换电池 @{2026-06-25}
+- [x] 电动车牌上交签字 @{2026-06-15}
+- [x] 微信输入法
 
 %% kanban:settings
 ```

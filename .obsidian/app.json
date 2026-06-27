@@ -6,7 +6,7 @@
   "promptDelete": false,
   "alwaysUpdateLinks": true,
   "tabSize": 4,
-  "readableLineLength": true,
+  "readableLineLength": false,
   "trashOption": "local",
   "newFileLocation": "folder",
   "newFileFolderPath": "roam",
