@@ -3,11 +3,43 @@ tags:
   - js
   - 前端
 ---
-# JavaScript 是单线程的
+# 核心特性
+## 函数是一等公民
 
-`JavaScript` 本身是单线程，但运行环境是多线程。  
+**what**：
+函数是==对象==（普通对象能做的，函数全部能做）
 
-`JavaScript` 本身只有一个主线程， **但浏览器 / Node 不是单线程**（定时器、网络请求、`IO`、渲染、`Worker` 都是别的线程）它们干完活，把**结果丢到任务队列**，等主线程空了，再回来执行回调。
+```js
+// 赋值给变量、对象、数组
+const fn = function() {}
+const obj = { hello: () => {} }
+const list = [() => 1, () => 2]
+
+// 作为参数（回调）
+arr.forEach(fn)
+
+// 作为返回值（闭包核心）
+function outer() { return function inner() {} }
+```
+
+**why**：
+javascript 中的高级能力都是基于此（高阶函数、闭包、回调、异步、函数式编程等）
+
+## javascript 是主线程单线程的
+
+**what**：
+javaScript 是单线程，且内部使用的是==事件循环机制==；但运行环境（浏览器 / Node）是多线程的
+```
+运行环境中的 定时器、网络请求、IO、渲染、Worker 都是别的线程
+它们干完活，把结果丢到任务队列，等主线程空了，再回来执行回调
+```
+
+**why**：
+为了简化 DOM 同步操作（浏览器环境首要任务是操作 DOM，如果 js 是多线程，多个线程同时修改 DOM 会产生竞态冲突）
+
+# 订阅与取消订阅
+
+用于防止内存泄露
 
 # JSX 和 TSX 之间的区别
 
@@ -44,3 +76,4 @@ function App(props: Props) {
 > **示例**： 将打包产物放到阿里云/腾讯云服务器、GitHub Pages、Vercel 等平台
 
 4. **发布（publish / release）**： 对外发布新版本
+

@@ -25,13 +25,9 @@ kanban-plugin: board
 
 - [ ] 研究装机：手提机箱
 - [ ] 了解其他设计模式
-- [ ] github：[tinyhttpd](https://github.com/ezlippi/tinyhttpd)
-- [ ] github：svpng
-- [ ] github：lsh
-- [ ] github：inih
-- [ ] github：spdlog
+- [ ] book：3D数学基础：图形和游戏开发
+- [ ] 3D数学
 - [ ] 火山引擎 coding plan
-- [ ] learn：vtk api（学习性测试）
 
 
 ## 进行中
@@ -39,13 +35,18 @@ kanban-plugin: board
 - [ ] docs：代码相关笔记
 - [ ] feat：剖面
 - [ ] feat：盒剖面
+- [ ] 线性代数 --- 3Blue1Brown 的《线性代数的本质》视频系列
+- [ ] GeoGebra
 
 
 ## feat：剖面
 
-- [x] 剖面状态库
-- [x] 控制面板
-- [ ] 实现轴向切割
+- [ ] 轴向切割
+- [ ] learn：intevue剖切代码
+- [ ] 反向轴向切割
+- [ ] 剖面颜色
+- [ ] 采用被剖面对象颜色
+- [ ] ！剖切参考面设置为模型斜对角面大小
 
 
 ***
@@ -78,6 +79,8 @@ kanban-plugin: board
 - [x] 电瓶车换电池 @{2026-06-25}
 - [x] 电动车牌上交签字 @{2026-06-15}
 - [x] 微信输入法
+- [x] 剖面状态库
+- [x] 控制面板
 
 %% kanban:settings
 ```
