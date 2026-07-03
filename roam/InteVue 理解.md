@@ -130,3 +130,51 @@ eye.applyQuaternion(quat) = 旋转偏移向量（方向变，长度不变）
 ```
 
 **绕目标点旋转相机**——算出"从当前朝向到目标朝向"的旋转量，把这个旋转应用到"相机到目标的偏移向量"上，偏移向量方向变了但长度不变，加回目标点就是相机新位置。
+
+# H_Send_Message
+
+内部调用全局统一消息入口 
+
+# 剖切代码流程
+
+点击剖切面板的**沿Y轴切割**后，到显示Y轴剖面全流程
+- 点击前：
+![[Pasted image 20260703090304.png]]
+
+- 点击后：
+![[Pasted image 20260703141243.png|338]]
+
+```hl:1-12,14-16,19-21,27
+CInteStencilClipControl.setNodesClippingPlane (10.8.254.124꞉5174/src/appCore/Operate/Clip&Explosion/InteStencilClipControl.js:166)
+HIOpClippingTwoPlane.setDefaultPlane (10.8.254.124꞉5174/src/appCore/Operate/Clip&Explosion/HIOpClippingTwoPlane.js:547)
+HIOpClippingTwoPlane.initOperate (10.8.254.124꞉5174/src/appCore/Operate/Clip&Explosion/HIOpClippingTwoPlane.js:130)
+HIOpClippingTwoPlane.constructor (10.8.254.124꞉5174/src/appCore/Operate/Clip&Explosion/HIOpClippingTwoPlane.js:58)
+createOpByType_part1 (10.8.254.124꞉5174/src/appCore/Operate/HIOpFactory.js:112)
+CreateOpByType (10.8.254.124꞉5174/src/appCore/Operate/HIOpFactory.js:69)
+SetOperateByType (10.8.254.124꞉5174/src/appCore/Operate/HIOpFactory.js:407)
+registerOperate (10.8.254.124꞉5174/src/appCore/Send_Message.js:1617)
+sendMessage3 (10.8.254.124꞉5174/src/appCore/Send_Message.js:168)
+H_Send_Message (10.8.254.124꞉5174/src/appCore/Send_Message.js:42)
+clipPlane (c:\Users\HP\code\backup\vuejs\src\components\panel\ClippingPanel.vue:282)
+clipAxios_Y (c:\Users\HP\code\backup\vuejs\src\components\panel\ClippingPanel.vue:456)
+Proxy(Object).checkPane (c:\Users\HP\code\backup\vuejs\src\components\panel\ClippingPanel.vue:470)
+CommandCheckClippingPane.run (10.8.254.124꞉5174/src/appCore/Command/CommandCheckClippingPane.js:18)
+CommandManager.run (10.8.254.124꞉5174/src/appCore/Command/CommandManager.js:116)
+checkClippingPane (10.8.254.124꞉5174/src/appCore/Send_Message.js:951)
+<anonymous> (10.8.254.124꞉5174/src/appCore/Send_Message.js:370)
+setTimeout (未知源:0)
+sendMessage7 (10.8.254.124꞉5174/src/appCore/Send_Message.js:369)
+H_Send_Message (10.8.254.124꞉5174/src/appCore/Send_Message.js:46)
+clipAxios_UseCommand (c:\Users\HP\code\backup\vuejs\src\components\panel\ClippingPanel.vue:443)
+_createVNode.onClick._cache.<computed>._cache.<computed> (10.8.254.124꞉5174/src/components/panel/ClippingPanel.vue:733)
+callWithErrorHandling (c:\Users\HP\code\backup\vuejs\node_modules\@vue\runtime-core\dist\runtime-core.esm-bundler.js:158)
+callWithAsyncErrorHandling (c:\Users\HP\code\backup\vuejs\node_modules\@vue\runtime-core\dist\runtime-core.esm-bundler.js:166)
+emit (c:\Users\HP\code\backup\vuejs\node_modules\@vue\runtime-core\dist\runtime-core.esm-bundler.js:664)
+<anonymous> (c:\Users\HP\code\backup\vuejs\node_modules\@vue\runtime-core\dist\runtime-core.esm-bundler.js:7422)
+onClick (c:\Users\HP\code\backup\vuejs\node_modules\ant-design-vue\es\vc-checkbox\Checkbox.js:101)
+callWithErrorHandling (c:\Users\HP\code\backup\vuejs\node_modules\@vue\runtime-core\dist\runtime-core.esm-bundler.js:158)
+callWithAsyncErrorHandling (c:\Users\HP\code\backup\vuejs\node_modules\@vue\runtime-core\dist\runtime-core.esm-bundler.js:166)
+invoker (c:\Users\HP\code\backup\vuejs\node_modules\@vue\runtime-dom\dist\runtime-dom.esm-bundler.js:278)
+```
+
+这个过程涉及到 **Vue 页面模板事件 → 统一消息分发器 → 命令调度** 的三层架构
