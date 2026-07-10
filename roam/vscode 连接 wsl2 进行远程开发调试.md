@@ -425,7 +425,9 @@ export default defineConfig( ( { mode } ) => {
       "url": "http://10.8.254.124:5173",     // 调试时自动打开的项目地址
       "webRoot": "${workspaceFolder}",      // 项目源码根目录（VSCode打开的文件夹）
       "sourceMaps": true,
-      
+	  "skipFiles": [                        // ！！！ 防止跳入系统库函数，这样可以调试异步函数
+	  	"${workspaceFolder}/node_modules/**"
+	  ],
       // 源码路径映射：让VS Code正确找到本地src文件
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/src/*"

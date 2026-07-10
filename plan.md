@@ -32,22 +32,22 @@ kanban-plugin: board
 
 ## 进行中
 
-- [ ] docs：代码相关笔记
-- [ ] feat：剖面
-- [ ] feat：盒剖面
+- [ ] project：三维可视化
 - [ ] 线性代数 --- 3Blue1Brown 的《线性代数的本质》视频系列
 - [ ] GeoGebra
+- [ ] GeoGebra测试线性代数
+- [ ] trae 智能提示时显示函数文档
 
 
 ## feat：剖面
 
-- [ ] learn：intevue剖切代码
-- [ ] 理解inteCAE剖切代码
-- [ ] GeoGebra测试线性代数
-- [ ] 轴向切割
-- [ ] 反向轴向切割
-- [ ] 剖面颜色
-- [ ] 采用被剖面对象颜色
+- [x] 代码连通
+- [ ] 盒剖切
+- [x] demo：cellPicker
+- [x] demo：方位坐标轴
+- [x] demo：控制球
+- [ ] demo：剖切
+- [ ] demo：管线
 
 
 ***
@@ -82,6 +82,11 @@ kanban-plugin: board
 - [x] 微信输入法
 - [x] 剖面状态库
 - [x] 控制面板
+- [x] 反向轴向切割
+- [x] 反向时箭头反向
+- [x] 参考平面设置依据场景中所有物体的包围盒
+- [x] 让剖切支持多模型
+- [x] 同步参考平面和控制球大小
 
 %% kanban:settings
 ```
