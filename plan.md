@@ -33,21 +33,16 @@ kanban-plugin: board
 ## 进行中
 
 - [ ] project：三维可视化
+- [ ] 盒剖切
 - [ ] 线性代数 --- 3Blue1Brown 的《线性代数的本质》视频系列
 - [ ] GeoGebra
 - [ ] GeoGebra测试线性代数
-- [ ] trae 智能提示时显示函数文档
 
 
 ## feat：剖面
 
-- [x] 代码连通
-- [ ] 盒剖切
-- [x] demo：cellPicker
-- [x] demo：方位坐标轴
-- [x] demo：控制球
-- [ ] demo：剖切
-- [ ] demo：管线
+- [ ] 旋转剖切时参考平面同步旋转
+- [ ] 轴约束
 
 
 ***
@@ -87,6 +82,7 @@ kanban-plugin: board
 - [x] 参考平面设置依据场景中所有物体的包围盒
 - [x] 让剖切支持多模型
 - [x] 同步参考平面和控制球大小
+- [x] trae 智能提示时显示函数文档
 
 %% kanban:settings
 ```
