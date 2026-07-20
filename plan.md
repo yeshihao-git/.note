@@ -35,12 +35,13 @@ kanban-plugin: board
 - [ ] three.js
 - [ ] opengl
 - [ ] [[图形学渲染管线（MVP、视口变换）]]添加数学公式
+- [ ] opencascade
+- [ ] osg
 
 
 ## webgl2
 
 - [ ] learn
-- [ ] demo
 
 
 
