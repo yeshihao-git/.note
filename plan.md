@@ -34,20 +34,15 @@ kanban-plugin: board
 - [ ] vtkjs源码
 - [ ] three.js
 - [ ] opengl
-- [ ] [[图形学渲染管线（MVP、视口变换）]]添加数学公式
+- [ ] [[渲染管线]]添加数学公式
 - [ ] opencascade
 - [ ] osg
-
-
-## webgl2
-
-- [ ] learn
 
 
 
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[true,true,true,false,false],"show-checkboxes":true,"new-note-folder":"roam","move-tags":true,"show-relative-date":true,"move-dates":false,"tag-action":"kanban","date-colors":[],"append-archive-date":false}
+{"kanban-plugin":"board","list-collapse":[true,true,true,false],"show-checkboxes":true,"new-note-folder":"roam","move-tags":true,"show-relative-date":true,"move-dates":false,"tag-action":"kanban","date-colors":[],"append-archive-date":false}
 ```
 %%

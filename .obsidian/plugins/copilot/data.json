@@ -80,7 +80,7 @@
     {
       "name": "gpt-5.5",
       "provider": "openai",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": true,
       "core": true,
       "capabilities": [
@@ -91,7 +91,7 @@
     {
       "name": "gpt-5.4-mini",
       "provider": "openai",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": true,
       "core": true,
       "capabilities": [
@@ -102,7 +102,7 @@
     {
       "name": "google/gemini-3.5-flash",
       "provider": "openrouterai",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": true,
       "projectEnabled": true,
       "capabilities": [
@@ -114,7 +114,7 @@
     {
       "name": "claude-sonnet-4-6",
       "provider": "anthropic",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": true,
       "capabilities": [
         "reasoning",
@@ -125,7 +125,7 @@
     {
       "name": "gemini-3.5-flash",
       "provider": "google",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": true,
       "projectEnabled": true,
       "capabilities": [
@@ -137,7 +137,7 @@
     {
       "name": "gemini-3.1-flash-lite",
       "provider": "google",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": true,
       "projectEnabled": true,
       "capabilities": [
@@ -148,7 +148,7 @@
     {
       "name": "gemini-2.5-flash",
       "provider": "google",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": true,
       "projectEnabled": true,
       "capabilities": [
@@ -316,7 +316,7 @@
       "name": "deepseek-ai/DeepSeek-V3",
       "provider": "siliconflow",
       "enabled": false,
-      "isBuiltIn": false,
+      "isBuiltIn": true,
       "baseUrl": "https://api.siliconflow.com/v1",
       "apiKey": ""
     },
@@ -324,7 +324,7 @@
       "name": "deepseek-ai/DeepSeek-R1",
       "provider": "siliconflow",
       "enabled": false,
-      "isBuiltIn": false,
+      "isBuiltIn": true,
       "baseUrl": "https://api.siliconflow.com/v1",
       "capabilities": [
         "reasoning"
@@ -334,30 +334,42 @@
     {
       "name": "z-ai/glm-4.5-air:free",
       "provider": "openrouterai",
-      "enabled": true,
+      "enabled": false,
       "apiKey": ""
     },
     {
       "name": "stepfun/step-3.7-flash",
       "provider": "openrouterai",
-      "enabled": true,
+      "enabled": false,
       "apiKey": ""
     },
     {
       "name": "moonshotai/kimi-k2.6:free",
       "provider": "openrouterai",
-      "enabled": true,
+      "enabled": false,
       "apiKey": ""
     },
     {
       "name": "google/gemma-4-31b-it:free",
       "provider": "openrouterai",
-      "enabled": true,
+      "enabled": false,
       "apiKey": ""
     },
     {
       "name": "gemma-4-31b-it",
       "provider": "google",
+      "enabled": false,
+      "apiKey": ""
+    },
+    {
+      "name": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "enabled": true,
+      "apiKey": ""
+    },
+    {
+      "name": "deepseek-v4-pro",
+      "provider": "deepseek",
       "enabled": true,
       "apiKey": ""
     }
@@ -526,6 +538,7 @@
   "enableRecentConversations": true,
   "maxRecentConversations": 30,
   "enableSavedMemory": true,
+  "quickCommandModelKey": "deepseek-v4-flash|deepseek",
   "quickCommandIncludeNoteContext": true,
   "autoIncludeTextSelection": false,
   "autoAddSelectionToContext": false,
