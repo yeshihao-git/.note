@@ -25,6 +25,27 @@ function outer() { return function inner() {} }
 **why**：
 javascript 中的高级能力都是基于此（高阶函数、闭包、回调、异步、函数式编程等）
 
+### this 的绑定（为什么方法引用会丢失 this）
+
+**what**： 
+因为函数是一等公民，方法可以被赋值 / 传递； 一旦脱离 `对象.` 调用形式，this 就会丢失
+
+```javascript
+window.fn = obj.method;           // ❌ fn() 时 this 不是 obj
+window.fn = () => obj.method();   // ✅ 箭头函数 + 点号调用
+window.fn = obj.method.bind(obj); // ✅ bind 显式绑定
+```
+
+**原因**：
+- this 在调用时确定，取决于调用形式
+- "对象.方法()" 时 this 是对象；单独调用时 this 不是对象
+- 赋值方法引用会断开方法与对象的关联
+
+**修复方案**
+1. 箭头函数包装：`window.fn = () => obj.method()`
+2. bind 绑定：`window.fn = obj.method.bind(obj)`
+3. 直接点号调用：`obj.method()`
+
 ## javascript 是主线程单线程的
 
 **what**：

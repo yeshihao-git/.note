@@ -1,13 +1,15 @@
 ---
 tags:
+  - js
+  - 前端
+  - 技巧
   - cpp
 ---
-# VTK 渲染管线
+# 渲染管线原理
 
-本节介绍 VTK 中最核心的渲染管线流程：从数据处理到可视化的完整流程及各个环节涉及的组件。
 ![[Pasted image 20260409182138.png]]
 
-| 组件                   | 作用                                      |
+| 术语                   | 作用                                      |
 | -------------------- | --------------------------------------- |
 | `Source`（数据源）        | 提供数据（创建或读取）                             |
 | `Filters`（过滤器）       | 对数据进行算法处理（剪裁、平移、旋转等）                    |
@@ -17,8 +19,193 @@ tags:
 | `RenderWindow`（渲染窗口） | 连接浏览器`DOM`的容器，如`Canvas`（持有多个`Renderer`） |
 | `Interactor` (交互器)   | 监听鼠标、键盘事件，更新相机位置或物体状态                   |
 
-# VTK 重要概念
-## VTK 内部索引
+## vtk.js架构
+
+- **Datatypes (数据类型):** 图像数据、几何/非结构化数据
+- **Filters (过滤器):** 变换或生成数据
+- **Rendering (渲染):** 数据如何被着色、呈现和放置
+- **Interaction (交互):** 控制场景视图或与场景中的 Actor（实体）进行交互
+- **I/O (输入/输出):** 读取 [[#3. vtk数据文件]] 到 `vtk.js` 
+- **Proxy (代理):** 一种抽象机制，用于集中处理典型的管线操作
+
+## vtk数据文件
+
+| 后缀     | 全称                       | 数据类型   | 用途                    |
+| ------ | ------------------------ | ------ | --------------------- |
+| `.vti` | VTK ImageData XML        | 规则体数据  | 图像、体积、规则网格            |
+| `.vtr` | VTK RectilinearGrid XML  | 正交直线网格 | 直角坐标网格                |
+| `.vts` | VTK StructuredGrid XML   | 结构化网格  | 结构化网格                 |
+| `.vtp` | VTK PolyData XML         | 多边形数据  | 多边形数据（**点、线、面、三角网格**） |
+| `.vtu` | VTK UnstructuredGrid XML | 非结构化网格 | 非结构化网格                |
+
+# vtk.js
+## pipeline 写法
+
+**why**：
+下游依赖上游，当上游变化，下游能感知到，vtk 会自动沿着 pipeline 进行计算
+
+**how**：标准写法
+```text
+vtkPolyData
+      │
+setInputData()
+      │
+TriangleFilter
+      │
+getOutputPort()
+      │
+setInputConnection()
+      │
+ClipFilter
+      │
+getOutputPort()
+      │
+setInputConnection()
+      │
+Normals
+      │
+getOutputPort()
+      │
+setInputConnection()
+      │
+Mapper
+      │
+Actor
+```
+
+对应代码就是：
+```js
+// polyData 这是数据本身，通过 reader 读取得到
+const polyData = reader.getOutputData();
+
+// 数据源
+const triangleFilter = vtkTriangleFilter.newInstance();
+triangleFilter.setInputData(polyData);
+
+// Filter1 -> Filter2
+const clipper = vtkClipPolyData.newInstance();
+clipper.setInputConnection(triangleFilter.getOutputPort());
+
+// Filter2 -> Mapper
+const mapper = vtkMapper.newInstance();
+mapper.setInputConnection(clipper.getOutputPort());
+
+// clipper.getOutputData() 会将 pipeline 截断
+// mapper.setInputConnection(clipper.getOutputData()); // 报错！！！！
+
+// Mapper -> Actor
+const actor = vtkActor.newInstance();
+actor.setMapper(mapper);
+```
+
+**一句话总结**：
+> 已有数据 → `setInputData()`
+> 连接上游算法 → `setInputConnection()`
+
+| 输入类型                     | 使用方法                   |
+| ------------------------ | ---------------------- |
+| `vtkPolyData`            | `setInputData()`       |
+| `vtkImageData`           | `setInputData()`       |
+| `vtkUnstructuredGrid`    | `setInputData()`       |
+| `filter.getOutputPort()` | `setInputConnection()` |
+| `reader.getOutputPort()` | `setInputConnection()` |
+
+## vtkjs 这种 api 文档不全的库，如何查看具体信息
+
+例如：`const config = vtkAxesActor.getConfig();` 使用时发现有智能提示 `config.recenter`，如何知道 config 中还有哪些字段？
+
+### 方法1：debug
+
+终端中启动 vite 服务器，在 launch.json 中将端口改到和 vite 服务器一致，开始 debug
+1. 直接鼠标悬浮查看
+2. 调试控制台中输入 `axesActor.getConfig()`
+
+### 方法2：看源码
+
+在头文件 `import vtkAxesActor from '@kitware/vtk.js/Rendering/Core/AxesActor';` 中右键选中==转到源定义==（不是转到类型定义）
+
+发现 `defaultValues` 函数定义了 `config` 的默认结构：
+
+```js
+config: {
+  recenter: true,        // ← 就在这里
+  tipResolution: 60,
+  tipRadius: 0.1,
+  tipLength: 0.2,
+  shaftResolution: 60,
+  shaftRadius: 0.03,
+  invert: false,
+  ...initialValues?.config
+}
+```
+
+所以 `getConfig()` 返回的 `config` 对象包含以下字段：
+
+| 字段 | 默认值 | 含义 |
+|------|--------|------|
+| `recenter` | `true` | 是否将轴居中（true=原点在中间，false=原点在一端） |
+| `tipResolution` | `60` | 箭头尖端分辨率 |
+| `tipRadius` | `0.1` | 箭头尖端半径 |
+| `tipLength` | `0.2` | 箭头尖端长度 |
+| `shaftResolution` | `60` | 箭杆分辨率 |
+| `shaftRadius` | `0.03` | 箭杆半径 |
+| `invert` | `false` | 是否反转方向 |
+
+同理，`xConfig` / `yConfig` / `zConfig` 各自包含 `color` 和 `invert` 字段。
+
+### 方法 3：打印
+
+```js
+const config = axesActor.getConfig();
+console.log(config);
+```
+
+后续在浏览器的控制台日志中查看，若 trae 开启调试模式，则能在 调试控制台 查看
+
+## 问题解决
+### fix：模型旋转中心不在模型中心
+
+> 问题背景：模型围绕着模型底部旋转
+
+**vtk.js 中的三个中心**：
+1. camera.focalPoint 是相机焦点，说明相机看向的位置
+2. actor.setOrigin 是模型自身的旋转中心
+3. interactorStyle.setCenterOfRotation 是交互旋转中心，控制世界围哪个点转
+
+**解决**：计算模型的包围盒中心后，设置为交互器的旋转中心
+```js
+// 获取交互器
+const interactor = renderWindow.getInteractor();
+
+if (interactor) {
+  interactor.setEnabled(true);
+}
+
+// 计算包围盒中心
+const bounds = surfaceData.getBounds();
+
+const center = [
+  (bounds[0] + bounds[1]) / 2,
+  (bounds[2] + bounds[3]) / 2,
+  (bounds[4] + bounds[5]) / 2
+];
+
+// 重置相机
+// 1. 自动计算模型包围盒：找到场景里所有模型的最小 / 最坐标
+// 2. 自动设置相机焦点：focalPoint：让相机看向模型中心。
+// 3. 自动设置相机位置：position：让相机退到合适距离，保证整个模型完整显示在画面里
+renderer.resetCamera();
+
+// 设置交互器旋转中心
+const interactorStyle = interactor.getInteractorStyle();
+interactorStyle.setCenterOfRotation(...center);
+
+renderWindow.render();
+```
+
+# vtkcpp
+## 重要概念
+### 内部索引
 
 **what**：
 整数 ID，用于标识 node、elements
@@ -26,28 +213,10 @@ tags:
 **why**：
 快速访问 node、elements
 
-# 了解 VTK 支持的文件格式以及对应 Reader
+## 支持的文件格式以及对应 Reader
 
 本节介绍 VTK 中常用的格式，包括：VTK 原生格式、部分外部数据格式；
 其次介绍对应的 Reader，在 VTK（C++）中 Reader 类的命名通常遵循 `vtk[格式名]Reader`。
-
-## VTK 原生格式
-
-VTK 原生格式是 VTK 自有的专用格式，性能和功能最佳。可以分为：
-1. Legacy：老牌，不支持并行IO，对大规模数据集的加载速度较慢
-2. XML：主流，支持**随机访问**、**块压缩**、**并行IO**
-3. VTKHDF：前沿，VTK 近几年提出的基于 HDF5 标准的新格式，速度更快，性能更好
-
-鉴于 XML 为目前的主流格式，这里只介绍 XML
-
-VTK XML 文件可从两个维度划分：
-1. 按**读写方式**划分
-    - **串行**：所有数据存于**单个文件**，由**单进程**读写。
-	- **并行**：数据拆分为多个 **Piece（块）**，分别存在多个串行文件中；并行文件本身不存数据，只做索引与结构描述，供**多进程**分别读写一个或多个数据块。
-
-2. 按**数据拓扑**划分
-	- **结构化数据集**：拓扑规则，通过 **Extent（范围）** 描述矩形子区域。
-	- **非结构化数据集**：拓扑不规则，通过 **Piece（块）** 描述子区域。
 
 | 类型                           | 扩展名   | 说明      | 对应的Reader                       |
 | ---------------------------- | ----- | ------- | ------------------------------- |
@@ -63,7 +232,7 @@ VTK XML 文件可从两个维度划分：
 | PStructuredGrid              | .pvts | 并行、结构化  | `vtkXMLPStructuredGridReader`   |
 | PUnstructuredGrid            | .pvtu | 并行、非结构化 | `vtkXMLPUnstructuredGridReader` |
 
-### VTK 原生格式可视化示例
+### 原生格式可视化示例
 #### ImageData
 
 点的排列是 X/Y/Z 轴等间距排列（2D时，X/Y 轴等间距排列）的矩阵栅格；
@@ -94,11 +263,7 @@ VTK XML 文件可从两个维度划分：
 由 **四面体、金字塔 等** 组成。
 ![[Pasted image 20260415154713.png|474]]
 
---- 
-
-**参考**：[VTK XML file formats](https://docs.vtk.org/en/latest/vtk_file_formats/vtkxml_file_format.html#)
-
-## 外部数据格式
+### 外部数据格式
 
 外部数据格式是外部软件生成的通用或专用的数据格式，用于数据交换。
 
@@ -108,11 +273,11 @@ VTK XML 文件可从两个维度划分：
 | PLY（多边形文件格式）   | `.ply` | `vtkPLYReader` |
 | OBJ（Wavefront） | `.obj` | `vtkOBJReader` |
 
-# 快速开始
+## 快速开始
 
 本节通过一个剖切代码示例，来介绍 VTK 渲染管线流程、reader、剖切、切面等内容。
 
-## 项目结构
+### 项目结构
 
 ```
 .
@@ -120,7 +285,7 @@ VTK XML 文件可从两个维度划分：
 └── CapClip.cxx
 ```
 
-## 编写 CMakeLists.txt 
+### 编写 CMakeLists.txt 
 
 ```cmake
 # 1. 指定CMake最低版本要求
@@ -172,7 +337,7 @@ vtk_module_autoinit(
 )
 ```
 
-## 编写代码
+### 编写代码
 
 ```C++
 // CapClip.cxx 文件
@@ -373,7 +538,7 @@ vtkSmartPointer<vtkPolyData> ReadPolyData(std::string const& fileName)
 } // namespace
 ```
 
-## 编译运行
+### 编译运行
 
 ```bash
 cmake -B build -G Ninja
@@ -384,11 +549,7 @@ cmake --build build
 最终效果
 ![[Pasted image 20260415162645.png|355]]
 
---- 
-
-**参考**：[vtk-examples CapClip](https://examples.vtk.org/site/Cxx/Meshes/CapClip/#download-and-build-capclip)
-
-# 常用 API 接口说明
+## 常用 API 接口说明
 
 本节只介绍 VTK 中最核心的 API（其余根据需求查找 [vtk-examples](https://examples.vtk.org/site/Cxx/) 和 [vtk reference](https://vtk.org/doc/nightly/html/classes.html)）
 
@@ -409,8 +570,6 @@ cmake --build build
 | 常用类               | 说明                                                                | 常用函数                  |
 | ----------------- | ----------------------------------------------------------------- | --------------------- |
 | `vtkSmartPointer` | `VTK` 定制的智能指针，用于自动化管理继承自`vtkObjectBase`的类的资源，类似 `std::shared_ptr` | `New()`<br>`Delete()` |
-
----
 
 **代码示例**：显示圆锥体
 ```C++
@@ -463,6 +622,4 @@ int main() {
 }
 ```
 
----
 
-**参考**：[vtk-examples](https://examples.vtk.org/site/Cxx/) [vtk reference](https://vtk.org/doc/nightly/html/classes.html)

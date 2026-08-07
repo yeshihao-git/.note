@@ -365,13 +365,22 @@
       "name": "deepseek-v4-flash",
       "provider": "deepseek",
       "enabled": true,
+      "temperature": 0.1,
+      "capabilities": [
+        "reasoning"
+      ],
+      "reasoningEffort": "high",
       "apiKey": ""
     },
     {
       "name": "deepseek-v4-pro",
       "provider": "deepseek",
       "enabled": true,
-      "apiKey": ""
+      "apiKey": "",
+      "capabilities": [
+        "reasoning"
+      ],
+      "reasoningEffort": "high"
     }
   ],
   "activeEmbeddingModels": [

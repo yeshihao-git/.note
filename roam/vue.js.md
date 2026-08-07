@@ -99,6 +99,80 @@ const handleClick = () => emit('ok')
 - `emit`：子 → 父
 `props` 和 `emit` 都是在**子组件**里声明、定义的，父组件只是 “传值 / 监听”
 
+### v-model
+
+**父组件**：
+```vue
+<MyCheckbox v-model="checked" />
+```
+v-model 是语法糖，vue 会自动编译为以下内容
+```vue
+<MyCheckbox
+  :modelValue="checked"
+  @update:modelValue="checked = $event"
+/>
+```
+
+**子组件**：
+必须接收
+```vue
+defineProps({
+  modelValue: Boolean
+})
+```
+并且触发
+```vue
+emit('update:modelValue', 新值)
+```
+
+**为什么发送事件名为 update:modelValue** ？
+vue 规定
+```vue
+update:prop名
+```
+例如
+```vue
+# 父组件
+<MyComponent
+  :name="name"
+  :age="age"
+  :sex="sex"
+/>
+
+# 子组件
+emit('update', value) 则 vue 不知道更新的是 name、age、sex
+
+# 正确 子组件
+emit('update:name', 'Tom')
+emit('update:age', 18)
+emit('update:sex', '男')
+```
+而 vue 默认把 v-model 绑定到 modelValue，所以默认事件就是 update:modelValue
+
+## template refs（模板引用）
+
+**why**：
+vue 中用于拿原生组件的特性
+
+**how**：
+使用 ref，而不是用 `document.getElementById` / `document.querySelector`
+```vue
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const container = ref(null)
+
+onMounted(() => {
+  const height = container.value.offsetHeight
+  const width = container.value.offsetWidth
+})
+</script>
+
+<template>
+  <div ref="container" style="height: 400px; width: 800px;"></div>
+</template>
+```
+
 ## 生命周期
 
 **what**：
@@ -109,6 +183,36 @@ vue组件创建、挂载、更新、销毁的完整运行过程，vue 提供了�
 2. 挂载阶段（渲染 DOM，页面出现组件）
 3. 更新阶段（响应式数据改变，视图重新渲染）
 4. 销毁阶段（组件卸载）
+
+
+```vue
+<script setup>
+// 创建阶段：组件实例已生成，DOM 尚未渲染（顶层代码即创建阶段）
+const count = ref(0)
+
+// 挂载阶段：DOM 渲染完成
+onMounted(() => {
+  console.log('挂载完成')
+})
+
+// 更新阶段：响应式数据变化，视图重新渲染后
+onUpdated(() => {
+  console.log('视图已更新')
+})
+
+// 销毁阶段：组件卸载时
+onUnmounted(() => {
+  console.log('组件已卸载')
+})
+</script>
+```
+
+| 阶段 | `<script setup>` | 选项式 |
+| --- | --- | --- |
+| 创建阶段 | 顶层代码 / `onBeforeMount` | `beforeCreate` / `created` / `beforeMount` |
+| 挂载阶段 | `onMounted` | `mounted` |
+| 更新阶段 | `onUpdated` | `updated` |
+| 销毁阶段 | `onUnmounted` | `unmounted` |
 
 ## computed（计算属性 ）
 

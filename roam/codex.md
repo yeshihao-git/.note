@@ -49,11 +49,4 @@ codex 中使用
 这段话告诉你的codex，将子代理设为luna-max。复杂任务用sol去做方案设计，用luna-max去并行执行，这样token消耗量会减少很多。
 
 请在以下路径创建一个名为 luna_worker 的自定义 Agent： ~/.codex/agents/luna-worker.toml 使用以下配置： model = "gpt-5.6-luna" model_reasoning_effort = "max" 请为这个 Agent 补充清晰的 description 和 instructions。 luna_worker 只负责处理范围明确、边界清晰、可以独立完成的委派任务，不负责修改整体任务目标，也不要自行扩大工作范围。 请保留我现有的其他 Codex 配置，不要覆盖或删除无关内容。 创建完成后： 1. 根据我当前安装的 Codex 版本检查配置格式是否兼容； 2. 展示本次修改产生的 diff； 3. 确认配置有效； 4. 后续需要调用子代理时，优先使用 luna_worker。
-
-  
-  
-作者：金融大叔的AI笔记  
-链接：  
-来源：知乎  
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 ```
