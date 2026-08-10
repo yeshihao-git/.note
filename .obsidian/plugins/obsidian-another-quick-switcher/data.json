@@ -788,7 +788,9 @@
       "includePrefixPathPatterns": [],
       "excludePrefixPathPatterns": [
         "roam/assets",
-        "roam/template"
+        "roam/template",
+        "copilot",
+        "tmp"
       ],
       "expand": true
     }

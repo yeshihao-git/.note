@@ -39,13 +39,7 @@ kanban-plugin: board
 - [ ] **spec**：规范、规格说明、设计说明
 
 
-***
 
-## Archive
-
-- [x] cicd跑通inteVue web
-- [x] powershell常用命令
-- [x] 草稿笔记分发
 
 %% kanban:settings
 ```
