@@ -9,6 +9,32 @@ tags:
 1. 默认包管理器：pip
 2. 深度学习库：pytorch
 
+## pyenv
+
+**what**：
+python 版本管理工具
+
+**how**：安装
+```bash
+curl -fsSL https://pyenv.run | bash
+~/.pyenv/bin/pyenv init --install
+exec "$SHELL"
+sudo apt update
+sudo apt install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libzstd-dev
+```
+参考：<https://github.com/pyenv/pyenv#installation>
+
+**how**：使用
+
+| 指令                          | 功能                                            | 示例                       |
+| --------------------------- | --------------------------------------------- | ------------------------ |
+| **`pyenv install --list`**  | 列出所有可安装的 Python 版本                            | `pyenv install --list`   |
+| **`pyenv install <版本号>`**   | 安装指定版本的 Python                                | `pyenv install 3.11.0`   |
+| **`pyenv global <版本号>`**    | **全局切换**：为当前用户设置默认 Python 版本                  | `pyenv global 3.11.0`    |
+| **`pyenv local <版本号>`**     | **项目切换**：当前目录创建 `.python-version` ，在该目录使用指定版本 | `pyenv local 3.10.0`     |
+| **`pyenv versions`**        | 列出所有已安装的 Python 版本，当前激活的版本前会有 `*` 标记          | `pyenv versions`         |
+| **`pyenv uninstall <版本号>`** | 卸载已安装的 Python 版本                              | `pyenv uninstall 3.10.0` |
+
 ## 概念
 ### 基础
 
@@ -328,3 +354,4 @@ class test:
 1. 类命名：全大写驼峰
 2. 函数命名：全小写带下划线
 3. 私有变量：使用双下划线(`__`)生成单下划线的变量
+

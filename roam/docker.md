@@ -10,17 +10,21 @@ tags:
 2. 镜像
 3. 容器
 
-概念
-- 分层机制：镜像由多个只读层（Dockerfile中每个RUN指令对应一层）构成，每层只存储与上一层的差异部分，优化镜像大小的方法：合并多个RUN为一个 或 多阶段构建。容器就是镜像上加了一层可写层，容器停止后可写层丢失。
-- 多阶段构建：在单个Dockerfile文件中定义多个FROM指令，分离构建和运行，只保留必要的文件和依赖，优化镜像大小
-- 构建上下文：构建镜像时，传给docker build命令的目录或URL，用于构建镜像
+**what**：分层机制
+镜像由多个只读层（Dockerfile 中每个 RUN 指令对应一层）构成，每层只存储与上一层的差异部分，优化镜像大小的方法：合并多个 RUN 为一个 或 多阶段构建。容器就是镜像上加了一层可写层，容器停止后可写层丢失
 
-docker的3个默认网络
-- bridge(桥接网络)   ：可以将容器接入这个虚拟子网，容器间通过IP或容器名通信
-- host(宿主机网络)   ：创建容器时通过 --network host 共享宿主机的网络（IP和端口）
-- none(禁用所有网络) ：只有lo（本地回环），无法与外界通信
+**what**：多阶段构建
+在单个 Dockerfile 文件中定义多个 FROM 指令，分离构建和运行，只保留必要的文件和依赖，优化镜像大小
 
-## docker配置镜像源
+**what**：构建上下文
+构建镜像时，传给 docker build 命令的目录或 URL，用于构建镜像
+
+**what**：docker 的3个默认网络
+- bridge（桥接网络）：可以将容器接入这个虚拟子网，容器间通过IP或容器名通信
+- host（宿主机网络）：创建容器时通过 --network host 共享宿主机的网络（IP和端口）
+- none（禁用所有网络）：只有lo（本地回环），无法与外界通信
+
+## docker 配置镜像源
 
 ```bash
 # 配镜像源影响 docker pull / docker push
@@ -28,7 +32,8 @@ vim /etc/docker/daemon.json # 输入以下内容
 
 {
         "registry-mirrors": [
-                "https://docker.lms.run",
+		        "https://docker.xuanyuan.me",
+                "https://docker.1ms.run",
                 "https://hub.rat.dev",
                 "https://docker.1panel.live",
                 "https://mirror.ccs.tencentyun.com",
@@ -36,9 +41,11 @@ vim /etc/docker/daemon.json # 输入以下内容
                 "https://hub-mirror.c.163.com"
         ]
 }
+
+curl -I <镜像源地址> # 测试镜像源是否可用
 ```
 
-## docker走代理
+## docker 走代理
 
 ```bash
 # 影响 docker build 的速度
@@ -63,7 +70,7 @@ docker build --network host \
 |CMD|指定容器创建时的默认命令 (可以覆盖)|
 |SHELL|覆盖 Docker 中默认的 shell，用于 RUN、CMD、ENTRYPOINT|
 
-## Dockerfile构建自动执行sql文件的镜像
+## Dockerfile 构建自动执行 sql 文件的镜像
 
 mysql官方镜像在第一次启动时，会自动执行 /docker-entrypoint-initdb.d目录 下的 .sql文件（SQL命令的集合）
 ```bash

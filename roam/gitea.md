@@ -10,7 +10,7 @@ tags:
 
 **how**：
 配置位置：`/opt/gitea/data/gitea/conf/app.ini`
-配置说明：https://docs.gitea.com/zh-cn/administration/config-cheat-sheet/
+配置说明：<https://docs.gitea.com/zh-cn/administration/config-cheat-sheet/>
 
 ## 从另一个 gitea 迁移仓库到当前 gitea
 
