@@ -12,6 +12,12 @@ tags:
 配置位置：`/opt/gitea/data/gitea/conf/app.ini`
 配置说明：<https://docs.gitea.com/zh-cn/administration/config-cheat-sheet/>
 
+## 部署 act_runner
+
+**方法**：
+1. 下载官方二进制
+2. docker 部署
+
 ## 从另一个 gitea 迁移仓库到当前 gitea
 
 1. 在==当前 gitea== 的 app.ini 中写入，允许从外部 gitea 迁移

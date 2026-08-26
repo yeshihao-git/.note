@@ -35,8 +35,6 @@ kanban-plugin: board
 
 - [ ] cicd使用手册
 - [ ] cicd相关经验笔记总结
-- [ ] kkrepo私有源
-- [ ] 内网环境部署
 
 
 
