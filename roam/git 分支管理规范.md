@@ -2,7 +2,7 @@
 tags:
   - git
 ---
-# git分支管理规范（简化版）
+# git 分支管理规范（简化版）
 
 **使用流程**：
 项目仓库中需要有测试用文件夹tests，并修改vitest.config.ts
@@ -13,7 +13,7 @@ tags:
 本地仓库第一次push到远程main后，再设置分支保护，管理员需遵守分支保护规则
 仓库设置中设置分支保护main无法直接push和强制push，只能merge，merge需要指定一个人审批，若unit-test工作流未通过或审批未通过，则无法merge，merge后需要删除feature分支
 
-# git分支管理规范
+# git 分支管理规范
 ## 分支结构
 
 参考 git flow 工作流程：
@@ -80,7 +80,7 @@ hotfix/*
 | hotfix/*  | main      | **Merge Commit** | 必须              | 否    | 保留线上修复历史 |
 | hotfix/*  | develop   | **Merge Commit** | 必须              | 否    | 同步修复     |
 
-## workflow触发时机与执行内容（简化版）
+## workflow 触发时机与执行内容（简化版）
 
 | 分支/事件                   | Trigger      | Workflow | 动作               | 备注               |
 | ----------------------- | ------------ | -------- | ---------------- | ---------------- |
@@ -118,7 +118,7 @@ hotfix/*
       │
       ├── 编译(Build)
       ├── Lint
-      ├── 单元测试(Unit Test)
+      ├── UT 单元测试
       └── TA 自动化测试
       │
       ▼
