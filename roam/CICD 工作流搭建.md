@@ -290,12 +290,59 @@ BLOCKED_DOMAINS =
 ```
 点击 ==迁移外部仓库==
 ![[Pasted image 20260822140333.png]]
-![[Pasted image 20260822140447.png|486]]
+![[Pasted image 20260822140447.png|556]]
 
-### 创建组织并设置
+### 创建组织存放代码并设置 scoped workflows
 
 1. 创建组织 InteVue 存放代码仓库
-![[Pasted image 20260828110208.png|831]]
-2. 创建工作流仓库 workflows，按 gitea 规则创建文件夹：==yml 文件必须放在 .gitea/scoped_workflows 中==
-![[Pasted image 20260828111354.png|828]]
-3. InteVue 组织设置
+![[Pasted image 20260828110208.png|870]]
+2. 创建工作流仓库 workflows，按 gitea 规则创建文件夹：yml 文件必须放在 ==.gitea/scoped_workflows== 中
+![[Pasted image 20260828111354.png|871]]
+3. InteVue 组织设置 scoped workflows
+![[Pasted image 20260831134445.png|885]]
+
+### 组织中的仓库设置规则
+
+1. 打开 InteVue 组织中的仓库设置，设置相关规则：
+	- 禁止直接 push main
+	- 需要代码评审
+	- 状态检查通过才能 merge（工作流、评审）
+	- 管理员需要遵守规则
+![[Pasted image 20260831134923.png|884]]
+![[Pasted image 20260831135106.png|865]]
+![[Pasted image 20260831135243.png|860]]
+![[Pasted image 20260831135339.png|850]]
+
+### workflow 规则
+
+![[Pasted image 20260831142722.png|843]]
+
+## tmp
+### master_v1_vuejs
+
+==运行通过==
+
+### intevue3Dweb 
+
+报错
+运行网址 http://192.168.42.129:48080/
+/app/appCore/AssembleProc/KeyFrame/IvKeyFramePolish.js 加密乱码无法运行
+
+### intevueCAEweb
+
+==运行通过==
+npm run dev -- --host 0.0.0.0
+访问 http://192.168.42.129:5173/
+
+### ecadweb_pcb
+
+==报错修正后通过==：导入时没考虑大小写，引用不存在的内容
+
+### eacdweb_edif
+
+==运行通过==
+有报错信息
+
+### PartRender
+
+==报错修正后通过==：导入时没考虑大小写，windows下不敏感，linux下大小写敏感

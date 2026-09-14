@@ -98,3 +98,14 @@ function App(props: Props) {
 
 4. **发布（publish / release）**： 对外发布新版本
 
+# 模块规范
+
+**what**：
+不同规范的导入导出方式不同
+
+| 模块规范       | 环境      | 导出                                               | 导入                                                        |
+| ---------- | ------- | ------------------------------------------------ | --------------------------------------------------------- |
+| CommonJS   | Node.js | `module.exports = { a: 1 }` 或 `exports.a = 1`    | `const { a } = require('./file')`                         |
+| ES Modules | 浏览器（现代） | `export default { a: 1 }` 或 `export const a = 1` | `import obj from './file'` 或 `import { a } from './file'` |
+| 全局变量       | 浏览器（传统） | 挂载到全局对象  `window.MyLib = MyLib;`                 | `MyLib.doSomething();`                                    |
+| AMD        | 旧版浏览器   | `define(['依赖'], function(dep){ return {a:1} })`  | `require(['./file'], function(obj){})`                    |

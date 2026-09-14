@@ -2,6 +2,9 @@
 tags:
   - 工作
 ---
+- InteWebVue ：管"业务"——事件、选择集、批注、模型数据之间的协作。
+- InteWebCtrlView ：管"画面"——Three.js 场景、相机、灯光、图层、剖切、高亮的实际渲染。
+
 # Render
 
 ScenMeshArray：用于 `Mesh` 排序与渲染量管理，解决 大规模3D模型的渲染性能问题 

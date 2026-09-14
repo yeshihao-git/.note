@@ -2,6 +2,7 @@
 tags:
   - 工具
   - git
+  - gitea
 ---
 # gitea
 
