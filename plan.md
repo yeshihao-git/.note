@@ -43,6 +43,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false],"show-checkboxes":true,"new-note-folder":"roam","move-tags":true,"show-relative-date":true,"move-dates":false,"tag-action":"kanban","date-colors":[],"append-archive-date":false}
+{"kanban-plugin":"board","list-collapse":[true,true,false],"show-checkboxes":true,"new-note-folder":"roam","move-tags":true,"show-relative-date":true,"move-dates":false,"tag-action":"kanban","date-colors":[],"append-archive-date":false}
 ```
 %%
