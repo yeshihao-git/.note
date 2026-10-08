@@ -240,3 +240,32 @@ computed:{ adultCount(){ return this.list.filter(...).length } }
 | watch       | 事件监听        |
 | ----------- | ----------- |
 | 监听 响应式数据值变化 | 监听 DOM 交互行为 |
+
+# 项目结构
+## Vue 3 + Vite + TypeScript  
+  
+```  
+my-vue-app/  
+├── public/                 # 静态资源  
+├── src/                    # 核心业务代码  
+│   ├── assets/             # 项目资源  
+│   ├── components/         # 通用组件  
+│   ├── views/              # 页面  
+│   ├── layouts/            # 页面布局  
+│   ├── router/             # 路由  
+│   ├── stores/             # 全局状态  
+│   ├── composables/        # 可复用逻辑  
+│   ├── services/           # API / 后端通信  
+│   ├── utils/              # 工具函数  
+│   ├── types/              # TypeScript 类型  
+│   ├── constants/          # 常量  
+│   ├── App.vue             # 根组件  
+│   └── main.ts             # 程序入口  
+│  
+├── index.html              # HTML 入口  
+├── package.json            # 项目依赖和 npm 脚本  
+├── package-lock.json       # 精确锁定依赖版本  
+├── vite.config.ts          # Vite 配置  
+├── tsconfig.json           # TS 配置  
+└── .env                    # 环境变量  
+```

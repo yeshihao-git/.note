@@ -20,14 +20,10 @@ kanban-plugin: board
 - [ ] conan2
 
 
-## 进行中
-
-
-
 
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false],"show-checkboxes":true,"new-note-folder":"roam","move-tags":true,"show-relative-date":true,"move-dates":false,"tag-action":"kanban","date-colors":[],"append-archive-date":false}
+{"kanban-plugin":"board","list-collapse":[false],"show-checkboxes":true,"new-note-folder":"roam","move-tags":true,"show-relative-date":true,"move-dates":false,"tag-action":"kanban","date-colors":[],"append-archive-date":false}
 ```
 %%
