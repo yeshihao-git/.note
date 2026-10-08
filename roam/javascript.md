@@ -109,3 +109,7 @@ function App(props: Props) {
 | ES Modules | 浏览器（现代） | `export default { a: 1 }` 或 `export const a = 1` | `import obj from './file'` 或 `import { a } from './file'` |
 | 全局变量       | 浏览器（传统） | 挂载到全局对象  `window.MyLib = MyLib;`                 | `MyLib.doSomething();`                                    |
 | AMD        | 旧版浏览器   | `define(['依赖'], function(dep){ return {a:1} })`  | `require(['./file'], function(obj){})`                    |
+
+# 项目文件
+
+**`package.json` 定义“项目需要哪些依赖”，`package-lock.json` 锁定“这些依赖具体安装哪个版本及其依赖关系”。**

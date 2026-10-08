@@ -181,3 +181,30 @@ invoker (c:\Users\HP\code\backup\vuejs\node_modules\@vue\runtime-dom\dist\runtim
 ```
 
 这个过程涉及到 **Vue 页面模板事件 → 统一消息分发器 → 命令调度** 的三层架构
+
+# 点线面
+
+**调用栈**：剖切-指定到面
+```ts
+CommandSetClipPlane.execute (10.8.254.124꞉5173/src/appCore/Command/CommandSetClipPlane.js:105)
+CommandSetClipPlane.run (10.8.254.124꞉5173/src/appCore/Command/CommandSetClipPlane.js:217)
+CommandManager.run (10.8.254.124꞉5173/src/appCore/Command/CommandManager.js:116)
+HIOpClippingOnePlane.executeSetNormalAndPositionCmd (10.8.254.124꞉5173/src/appCore/Operate/Clip&Explosion/HIOpClippingOnePlane.js:681)
+HIOpClippingOnePlane.capturePlaneClipCmd (10.8.254.124꞉5173/src/appCore/Operate/Clip&Explosion/HIOpClippingOnePlane.js:589)
+HIOpClippingOnePlane.OnLButtonUp (10.8.254.124꞉5173/src/appCore/Operate/Clip&Explosion/HIOpClippingOnePlane.js:328)
+CInteWebVue.onMouse_mouseup (10.8.254.124꞉5173/src/appCore/InteWebVue.js:542)
+canvas.mouse_pointerup (10.8.254.124꞉5173/src/appCore/InteWebVue.js:222)
+```
+
+**调用栈**：剖切-指定到点
+```ts
+HIOpClippingOnePlane.changeFromNromalConstant (10.8.254.124꞉5173/src/appCore/Operate/Clip&Explosion/HIOpClippingOnePlane.js:441)
+GlobalFunction.changeClip2dViewPlaneConstant (10.8.254.124꞉5173/src/appCore/GlobalFunction.js:572)
+CommandSetClipPlaneConstant.run (10.8.254.124꞉5173/src/appCore/Command/CommandSetClipPlaneConstant.js:34)
+CommandManager.run (10.8.254.124꞉5173/src/appCore/Command/CommandManager.js:116)
+HIOpClippingOnePlane.executeSetPlaneConstant (10.8.254.124꞉5173/src/appCore/Operate/Clip&Explosion/HIOpClippingOnePlane.js:694)
+HIOpClippingOnePlane.capturePointClipCmd (10.8.254.124꞉5173/src/appCore/Operate/Clip&Explosion/HIOpClippingOnePlane.js:566)
+HIOpClippingOnePlane.OnLButtonUp (10.8.254.124꞉5173/src/appCore/Operate/Clip&Explosion/HIOpClippingOnePlane.js:327)
+CInteWebVue.onMouse_mouseup (10.8.254.124꞉5173/src/appCore/InteWebVue.js:542)
+canvas.mouse_pointerup (10.8.254.124꞉5173/src/appCore/InteWebVue.js:222)
+```
