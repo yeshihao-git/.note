@@ -18,28 +18,21 @@ kanban-plugin: board
 - [ ] conan2
 
 
-## 100个vibe项目
+## 100个coding项目
 
-- [x] 1. markdown预览工具
-- [ ] 2. 个人网站（vue+java）
-
-
-## 个人网站
-
-- [ ] 架构搭建
-- [ ] 登录注册模块
-- [ ] 笔记模块
-- [ ] 片刻模块
+- [x] 1. 【vibe】markdown预览工具
+- [ ] 2. 个人网站 让 AI 给出 PRD SPEC 设计文档，手写代码
 
 
 ## 健身
 
 - [ ] **徒手健身**：俯卧撑、[[深蹲]]
-- [ ] **体态矫正**：
+- [ ] **体态矫正**：每日
 
 
 ## 考公
 
+- [ ] 资料分析
 
 
 ***
@@ -52,6 +45,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false],"show-checkboxes":true,"new-note-folder":"roam","move-tags":true,"show-relative-date":true,"move-dates":false,"tag-action":"kanban","date-colors":[],"append-archive-date":false}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false],"show-checkboxes":true,"new-note-folder":"roam","move-tags":true,"show-relative-date":true,"move-dates":false,"tag-action":"kanban","date-colors":[],"append-archive-date":false}
 ```
 %%
