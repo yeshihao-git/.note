@@ -123,10 +123,42 @@ sudo apt install lldb
 
 # 编译调试 Java 代码
 
-1. `vscode` 中安装 `Java` 相关插件  
+1. wsl2 中安装和使用 **SDKMAN**（安装、管理、切换不同版本 JDK 的工具） 安装 JDK
+```bash
+#--- 安装 SDKMAN ---#
+# 更新软件包列表，确保获取最新的软件版本信息
+sudo apt update
+
+# 安装 zip 和 unzip 工具，sdkman 安装过程需要解压文件
+sudo apt install zip unzip
+
+# 下载并执行 sdkman 的官方安装脚本
+curl -s "https://get.sdkman.io" | bash
+
+# 初始化 sdkman 环境，将 sdk 命令加载到当前 Shell 会话中
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# 验证 sdkman 是否安装成功，输出版本号即表示安装完成
+sdk version
+
+#--- SDKMAN 安装 JDK ---#
+# 查看可安装的 Java 版本列表
+sdk list java
+
+# 安装指定版本的 Java (例如: 17.0.18-tem)
+sdk install 21.0.4.0+7-amzn
+
+# 切换当前终端使用的 Java 版本
+sdk use 21.0.4.0+7-amzn
+
+# 设置全局默认 Java 版本
+sdk default 21.0.4.0+7-amzn
+```
+
+2. `vscode` 中安装 `Java` 相关插件  
 ![[Pasted image 20260413111521.png]]  
 
-2. 编写 `launch.json`
+3. 编写 `launch.json`
 ```js
 {
     "version": "0.2.0",
@@ -142,8 +174,9 @@ sudo apt install lldb
 }
 ```
 
-3. 在右上角选择 `Run Java` 进行编译，选择 `Debug Java` 进行 `debug`  
+4. 在右上角选择 `Run Java` 进行编译，选择 `Debug Java` 进行 `debug`  
 ![[Pasted image 20260413112108.png]]  
+
 
 ## Java 调用 C++ 动态库
 ### 方法1：通过 JNI 调用 C++ 代码

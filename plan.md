@@ -21,7 +21,7 @@ kanban-plugin: board
 ## 100个coding项目
 
 - [x] 1. 【vibe】markdown预览工具
-- [ ] 2. 个人网站 让 AI 给出 PRD SPEC 设计文档，手写代码
+- [ ] 2. 个人网站（让 AI 给出 PRD SPEC 设计文档，手写代码）
 
 
 ## 健身
@@ -35,13 +35,14 @@ kanban-plugin: board
 - [ ] 资料分析
 
 
-***
-
 ## Archive
 
 - [x] **调研**：宁波 编制岗位、待遇、考试科目
 - [x] **调研**：嘉兴 编制岗位、待遇、考试科目
 - [x] **调研**：温州 编制岗位、待遇、考试科目
+
+
+
 
 %% kanban:settings
 ```
