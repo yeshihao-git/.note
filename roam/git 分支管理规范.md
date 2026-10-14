@@ -103,10 +103,6 @@ hotfix/*
 |deploy/test|测试环境|测试人员|
 |deploy/prod|生产环境|用户|
 
-**参考**：
-- [上市公司Git分支管理规范](https://developer.aliyun.com/article/1366103?spm=5176.26934562.main.1.289312d4x3vVLY)
-- [大厂git分支管理规范：gitflow规范指南](https://www.cnblogs.com/kevin-ying/p/14329768.html "发布于 2021-01-26 13:13")
-
 # tmp
 ## CICD
 

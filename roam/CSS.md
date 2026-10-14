@@ -3,6 +3,17 @@ tags:
   - 前端
 ---
 # CSS
+## vue 项目样式文件夹层级结构
+
+```
+├── style.css           # 样式统一入口
+└── src/styles/
+	├── reset.css       # 清除浏览器默认样式
+	├── global.css      # 统一全局基础样式
+	├── tokens.css      # 颜色、字号、间距等设计变量
+	└── layout.css      # 统一全局布局样式   
+```
+
 ## 伪类和伪元素
 
 特殊的类型选择器——CSS 伪类和伪元素。

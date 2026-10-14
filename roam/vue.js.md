@@ -2,6 +2,7 @@
 tags:
   - js
   - 前端
+  - vue
 ---
 # 核心特性
 ## SFC（单文件组件）
@@ -250,12 +251,12 @@ my-vue-app/
 ├── src/                    # 核心业务代码  
 │   ├── assets/             # 项目资源  
 │   ├── components/         # 通用组件  
-│   ├── views/              # 页面  
 │   ├── layouts/            # 页面布局  
+│   ├── views/              # 页面  
 │   ├── router/             # 路由  
 │   ├── stores/             # 全局状态  
-│   ├── composables/        # 可复用逻辑  
 │   ├── services/           # API / 后端通信  
+│   ├── composables/        # 可复用逻辑  
 │   ├── utils/              # 工具函数  
 │   ├── types/              # TypeScript 类型  
 │   ├── constants/          # 常量  

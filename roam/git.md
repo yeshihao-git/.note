@@ -5,11 +5,56 @@ tags:
 # git
 
 **what**：
-用于版本管理的命令行工具，包含四个重要的区域：
+用于版本管理的命令行工具，四个重要的区域：
 1. 工作区（Working Directory）
 2. 索引（Index）
 3. 仓库（HEAD）
 4. 远程仓库
+
+## git 规范
+### git commit规范
+
+```xml
+<commit类型>[<commit涉及范围>]: <commit简短描述>
+
+<body>
+
+<footer>
+```
+
+`<commit类型>` 如下：
+
+| 类型       | 说明                          |
+| -------- | --------------------------- |
+| feat     | 新增 feature (新功能)            |
+| fix      | 修复 bug                      |
+| docs     | 修改文档                        |
+| style    | 修改视觉样式、代码格式                 |
+| refactor | 代码重构，没有 加新功能或者 修复 bug 的代码变动 |
+| perf     | 优化相关，比如提升性能、体验              |
+| test     | 增加 测试用例                     |
+| chore    | 构建工具或辅助工具的变动                |
+| revert   | 回滚到上一个版本                    |
+| merge    | 代码合并                        |
+| sync     | 同步主线或分支的 bug                |
+### git 分支规范
+
+| 分类                      | 分支            | 作用                                                                |
+| ----------------------- | ------------- | ----------------------------------------------------------------- |
+| 长期分支                    | master        | (主分支) 上线版本， hotfix 分支从该分支创建                                       |
+|                         | develop       | (开发分支) 相对稳定版本， feature 分支、bugfix 分支、release 分支都从该分支创建             |
+| 短期分支<br><br>(完成功能开发后删除) | feature / 分支名 | (功能分支) 开发自测后，合并到 develop 分支，删除该分支                                 |
+|                         | bugfix / 分支名  | (bug 修复分支) 用于修复不紧急的 bug，从 develop 创建，开发自测后，合并到 develop 后，删除该分支    |
+|                         | release / 分支名 | (预发布分支) 从 develop 创建，发布到测试环境测试，发现 bug 修复后，合并到 master 和 develop，上线 |
+|                         | hotfix / 分支名  | (紧急 bug 修复分支) 从 master 分支创建，用于紧急修复线上 bug，修复后，合并到 master 和 develop |
+
+## .gitkeep
+
+**what**：
+`.gitkeep` 是一个约定俗成的占位文件，用于让 Git 保留空文件夹
+
+**why**：
+git 默认不会跟踪空文件夹，只会跟踪文件
 
 ## github 历史版本回退
 
@@ -159,43 +204,6 @@ git clone https://gitee.com/mirrors/仓库名.git
 git clone https://gitclone.com/github.com/pzl/oa1.git # 嵌入后
 git clone https://github.com/pzl/oa1.git              # 嵌入前
 ```
-
-## git 规范
-### git commit规范
-
-```bash
-<commit类型>[<commit涉及范围>]: <commit简短描述>
-
-<body>
-
-<footer>
-```
-
-<commit类型>如下：
-
-|类型|说明|
-|---|---|
-|feat|新增 feature (新功能)|
-|fix|修复 bug|
-|docs|仅仅修改了文档|
-|style|仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑|
-|refactor|代码重构，没有 加新功能或者 修复 bug 的代码变动|
-|perf|优化相关，比如提升性能、体验|
-|test|增加 测试用例|
-|chore|构建工具或辅助工具的变动|
-|revert|回滚到上一个版本|
-|merge|代码合并|
-|sync|同步主线或分支的 bug|
-### git branch规范
-
-| 分类                      | 分支            | 作用                                                                |
-| ----------------------- | ------------- | ----------------------------------------------------------------- |
-| 长期分支                    | master        | (主分支) 上线版本， hotfix 分支从该分支创建                                       |
-|                         | develop       | (开发分支) 相对稳定版本， feature 分支、bugfix 分支、release 分支都从该分支创建             |
-| 短期分支<br><br>(完成功能开发后删除) | feature / 分支名 | (功能分支) 开发自测后，合并到 develop 分支，删除该分支                                 |
-|                         | bugfix / 分支名  | (bug 修复分支) 用于修复不紧急的 bug，从 develop 创建，开发自测后，合并到 develop 后，删除该分支    |
-|                         | release / 分支名 | (预发布分支) 从 develop 创建，发布到测试环境测试，发现 bug 修复后，合并到 master 和 develop，上线 |
-|                         | hotfix / 分支名  | (紧急 bug 修复分支) 从 master 分支创建，用于紧急修复线上 bug，修复后，合并到 master 和 develop |
 
 ## git diff信息详解
 
