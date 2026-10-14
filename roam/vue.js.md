@@ -242,6 +242,15 @@ computed:{ adultCount(){ return this.list.filter(...).length } }
 | ----------- | ----------- |
 | 监听 响应式数据值变化 | 监听 DOM 交互行为 |
 
+# 打包流程
+
+| 工具   | 主要职责           | 对应命令                     |
+| ---- | -------------- | ------------------------ |
+| Vite | 编译、构建、打包代码     | `npm run build`          |
+| npm  | 管理依赖、生成安装包、发布包 | `npm pack`、`npm publish` |
+
+![[Pasted image 20261014100939.png]]
+
 # 项目结构
 ## Vue 3 + Vite + TypeScript  
   
