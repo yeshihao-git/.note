@@ -14,6 +14,7 @@ tags:
 | scoop      | 命令行工具 安装      |
 | papertodo  | 便签            |
 | everything | 搜索            |
+| sinpaste   | 截图            |
 
 ## 美化
 
