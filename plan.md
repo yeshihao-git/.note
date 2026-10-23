@@ -6,14 +6,14 @@ kanban-plugin: board
 
 ## 技术
 
+- [ ] three.js（web端三维可视化）
+- [ ] occt（occ / opencascade）
+- [ ] osg（桌面端三维可视化）
 - [ ] opengl
-- [ ] osg
-- [ ] opencascade
-- [ ] occ
+- [ ] 计算机图形学
 - [ ] book：3D数学基础：图形和游戏开发
 - [ ] 线性代数 --- 3Blue1Brown 的《线性代数的本质》视频系列
 - [ ] book：架构师修炼之道
-- [ ] 计算机图形学
 - [ ] github：[系统设计](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md)
 - [ ] conan2
 

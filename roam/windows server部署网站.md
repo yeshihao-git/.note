@@ -3,6 +3,7 @@ tags:
   - windows
 aliases:
   - windows 服务器部署网站
+  - 使用 IIS 部署网站
 ---
 # windows server部署网站 
 ## 部署网站
