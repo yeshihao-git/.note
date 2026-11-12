@@ -15,6 +15,7 @@ tags:
 | papertodo  | 便签            |
 | everything | 搜索            |
 | sinpaste   | 截图            |
+| uu远程       | 远程操作          |
 
 ## 美化
 

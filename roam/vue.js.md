@@ -257,7 +257,7 @@ computed:{ adultCount(){ return this.list.filter(...).length } }
 ```  
 my-vue-app/  
 ├── public/                 # 静态资源  
-├── src/                    # 核心业务代码  
+├── src/                      
 │   ├── assets/             # 项目资源  
 │   ├── components/         # 通用组件  
 │   ├── layouts/            # 页面布局  
@@ -265,7 +265,7 @@ my-vue-app/
 │   ├── router/             # 路由  
 │   ├── stores/             # 全局状态  
 │   ├── services/           # API / 后端通信  
-│   ├── composables/        # 可复用逻辑  
+│   ├── composables/        # 组件级可复用逻辑  
 │   ├── utils/              # 工具函数  
 │   ├── types/              # TypeScript 类型  
 │   ├── constants/          # 常量  
